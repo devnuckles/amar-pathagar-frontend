@@ -4,14 +4,16 @@ A classic, old-school styled Next.js frontend for the Amar Pathagar community li
 
 ## Tech Stack
 
-| Category | Technology |
-|----------|-----------|
-| **Framework** | Next.js 14 (App Router) |
-| **Language** | TypeScript 5 |
-| **Styling** | Tailwind CSS |
-| **State Management** | Zustand |
-| **HTTP Client** | Axios |
-| **Date Handling** | date-fns |
+| Category | Technology | Version |
+|----------|-----------|---------|
+| **Framework** | Next.js (App Router) | 16.1.6 |
+| **Language** | TypeScript | 5.7.3 |
+| **UI Library** | React | 19.2.4 |
+| **Styling** | Tailwind CSS | 4.2.1 |
+| **State Management** | Zustand | 5.0.11 |
+| **HTTP Client** | Axios | 1.13.5 |
+| **Date Handling** | date-fns | 4.1.0 |
+| **Icons** | Lucide React | 0.575.0 |
 
 ## Quick Start
 
@@ -59,10 +61,33 @@ frontend/
 ├── Dockerfile.dev          # Development build
 ├── Makefile                # Commands
 ├── next.config.js          # Next.js config
-├── tailwind.config.js      # Tailwind config
+├── postcss.config.js       # PostCSS config (Tailwind v4)
 ├── tsconfig.json           # TypeScript config
 └── package.json            # Dependencies
 ```
+
+## Important Notes
+
+### Tailwind CSS v4
+This project uses **Tailwind CSS v4**, which has a different configuration approach:
+- Configuration is done via CSS using `@theme` directive in `globals.css`
+- No `tailwind.config.js` file (removed in v4)
+- Uses `@tailwindcss/postcss` plugin instead of the old PostCSS plugin
+- Some utility classes have changed (e.g., `ring-opacity-20` → `ring-color/20`)
+
+### React 19
+This project uses **React 19** with new features:
+- New hooks: `use()`, `useOptimistic()`, `useFormStatus()`
+- Improved Server Components
+- Better concurrent rendering
+- Enhanced error handling
+
+### Next.js 16
+This project uses **Next.js 16** with:
+- Turbopack as the default bundler (faster builds)
+- Enhanced App Router
+- Improved caching strategies
+- Better TypeScript support
 
 ## Environment Variables
 
@@ -307,4 +332,5 @@ MIT License
 
 ---
 
-**Built with Next.js 14 and classic design principles** 📚
+**Built with Next.js 16, React 19, and Tailwind CSS v4** 📚
+**Last Updated**: February 2026
