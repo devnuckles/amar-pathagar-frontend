@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/authStore";
 import { useEffect, useState } from "react";
+import { Logo } from "@/components/layout/logo";
 
 export default function LandingPage() {
   const router = useRouter();
@@ -18,28 +19,31 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-old-paper">
+    <div className="min-h-screen" style={{ backgroundColor: 'hsl(var(--background))' }}>
       {/* Navigation */}
-      <nav className="border-b-4 border-old-ink bg-white shadow-[0px_4px_0px_0px_rgba(0,0,0,0.3)]">
+      <nav 
+        className="border-b-4 shadow-[0px_4px_0px_0px_rgba(0,0,0,0.3)]"
+        style={{ 
+          borderColor: 'hsl(var(--border))',
+          backgroundColor: 'hsl(var(--card))'
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <span className="text-3xl">📚</span>
-              <div>
-                <h1 className="text-xl md:text-2xl font-bold uppercase tracking-wider">
-                  Amar Pathagar
-                </h1>
-                <p className="text-xs text-old-grey uppercase tracking-wider hidden md:block">
-                  Trust-Based Reading Network
-                </p>
-              </div>
-            </div>
+            {/* Use Logo Component */}
+            <Logo size="nav" />
+            
             <div className="flex gap-2 md:gap-3">
               {isAuthenticated ? (
                 <button
                   onClick={() => router.push("/dashboard")}
-                  className="px-4 md:px-6 py-2 border-2 border-old-ink bg-old-ink text-old-paper font-bold uppercase text-xs md:text-sm
-                           hover:bg-gray-800 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]"
+                  className="px-4 md:px-6 py-2 border-2 font-bold uppercase text-xs md:text-sm
+                           transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]"
+                  style={{
+                    borderColor: 'hsl(var(--border))',
+                    backgroundColor: 'hsl(var(--primary))',
+                    color: 'hsl(var(--primary-foreground))'
+                  }}
                 >
                   📊 Dashboard
                 </button>
@@ -47,15 +51,25 @@ export default function LandingPage() {
                 <>
                   <button
                     onClick={() => router.push("/login")}
-                    className="px-4 md:px-6 py-2 border-2 border-old-ink bg-white text-old-ink font-bold uppercase text-xs md:text-sm
-                             hover:bg-old-ink hover:text-old-paper transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]"
+                    className="px-4 md:px-6 py-2 border-2 font-bold uppercase text-xs md:text-sm
+                             transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]"
+                    style={{
+                      borderColor: 'hsl(var(--border))',
+                      backgroundColor: 'hsl(var(--card))',
+                      color: 'hsl(var(--foreground))'
+                    }}
                   >
                     Login
                   </button>
                   <button
                     onClick={() => router.push("/register")}
-                    className="px-4 md:px-6 py-2 border-2 border-old-ink bg-old-ink text-old-paper font-bold uppercase text-xs md:text-sm
-                             hover:bg-gray-800 transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]"
+                    className="px-4 md:px-6 py-2 border-2 font-bold uppercase text-xs md:text-sm
+                             transition-all shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)]"
+                    style={{
+                      borderColor: 'hsl(var(--border))',
+                      backgroundColor: 'hsl(var(--primary))',
+                      color: 'hsl(var(--primary-foreground))'
+                    }}
                   >
                     Sign Up
                   </button>
@@ -67,7 +81,13 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="border-b-4 border-old-ink bg-gradient-to-br from-amber-50 to-old-paper py-12 md:py-20 relative overflow-hidden">
+      <section 
+        className="border-b-4 bg-linear-to-br py-12 md:py-20 relative overflow-hidden"
+        style={{
+          borderColor: 'hsl(var(--border))',
+          backgroundImage: 'linear-gradient(to bottom right, hsl(var(--accent)), hsl(var(--background)))'
+        }}
+      >
         <div className="absolute top-0 right-0 text-9xl md:text-[20rem] opacity-5">
           📖
         </div>
@@ -76,12 +96,18 @@ export default function LandingPage() {
             <div className="mb-6">
               <span className="text-6xl md:text-8xl">📚</span>
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-wider mb-4 md:mb-6">
+            <h2 
+              className="text-4xl md:text-6xl font-bold uppercase tracking-wider mb-4 md:mb-6"
+              style={{ color: 'hsl(var(--foreground))' }}
+            >
               Share Books,
               <br />
               Build Trust
             </h2>
-            <p className="text-lg md:text-xl text-old-grey mb-6 md:mb-8 leading-relaxed">
+            <p 
+              className="text-lg md:text-xl mb-6 md:mb-8 leading-relaxed"
+              style={{ color: 'hsl(var(--muted-foreground))' }}
+            >
               A community-driven library where books circulate based on trust
               and reputation. No late fees, no bureaucracy—just readers helping
               readers.
@@ -90,8 +116,13 @@ export default function LandingPage() {
               {isAuthenticated ? (
                 <button
                   onClick={() => router.push("/dashboard")}
-                  className="px-8 md:px-12 py-4 border-4 border-old-ink bg-old-ink text-old-paper font-bold uppercase text-base md:text-lg
-                           hover:bg-gray-800 transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]"
+                  className="px-8 md:px-12 py-4 border-4 font-bold uppercase text-base md:text-lg
+                           transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]"
+                  style={{
+                    borderColor: 'hsl(var(--border))',
+                    backgroundColor: 'hsl(var(--primary))',
+                    color: 'hsl(var(--primary-foreground))'
+                  }}
                 >
                   📊 Go to Dashboard
                 </button>
@@ -99,8 +130,13 @@ export default function LandingPage() {
                 <>
                   <button
                     onClick={() => router.push("/register")}
-                    className="px-8 md:px-12 py-4 border-4 border-old-ink bg-old-ink text-old-paper font-bold uppercase text-base md:text-lg
-                             hover:bg-gray-800 transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]"
+                    className="px-8 md:px-12 py-4 border-4 font-bold uppercase text-base md:text-lg
+                             transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]"
+                    style={{
+                      borderColor: 'hsl(var(--border))',
+                      backgroundColor: 'hsl(var(--primary))',
+                      color: 'hsl(var(--primary-foreground))'
+                    }}
                   >
                     Get Started Free
                   </button>
@@ -110,8 +146,13 @@ export default function LandingPage() {
                         .getElementById("how-it-works")
                         ?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="px-8 md:px-12 py-4 border-4 border-old-ink bg-white text-old-ink font-bold uppercase text-base md:text-lg
-                             hover:bg-old-paper transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]"
+                    className="px-8 md:px-12 py-4 border-4 font-bold uppercase text-base md:text-lg
+                             transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]"
+                    style={{
+                      borderColor: 'hsl(var(--border))',
+                      backgroundColor: 'hsl(var(--card))',
+                      color: 'hsl(var(--foreground))'
+                    }}
                   >
                     Learn More
                   </button>
@@ -123,7 +164,13 @@ export default function LandingPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="border-b-4 border-old-ink bg-white py-8 md:py-12">
+      <section 
+        className="border-b-4 py-8 md:py-12"
+        style={{
+          borderColor: 'hsl(var(--border))',
+          backgroundColor: 'hsl(var(--card))'
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             <StatCard icon="📖" number="1000+" label="Books Shared" />
@@ -249,30 +296,58 @@ export default function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="border-b-4 border-old-ink bg-white py-12 md:py-20">
+      <section 
+        className="border-b-4 py-12 md:py-20"
+        style={{
+          borderColor: 'hsl(var(--border))',
+          backgroundColor: 'hsl(var(--card))'
+        }}
+      >
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="border-4 border-old-ink bg-gradient-to-br from-amber-50 to-old-paper p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)]">
+          <div 
+            className="border-4 bg-linear-to-br p-8 md:p-12 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)]"
+            style={{
+              borderColor: 'hsl(var(--border))',
+              backgroundImage: 'linear-gradient(to bottom right, hsl(var(--accent)), hsl(var(--background)))'
+            }}
+          >
             <span className="text-5xl md:text-6xl mb-4 block">📚</span>
-            <h3 className="text-3xl md:text-4xl font-bold uppercase tracking-wider mb-4">
+            <h3 
+              className="text-3xl md:text-4xl font-bold uppercase tracking-wider mb-4"
+              style={{ color: 'hsl(var(--foreground))' }}
+            >
               Ready to Start Reading?
             </h3>
-            <p className="text-old-grey text-base md:text-lg mb-6 md:mb-8">
+            <p 
+              className="text-base md:text-lg mb-6 md:mb-8"
+              style={{ color: 'hsl(var(--muted-foreground))' }}
+            >
               Join our community of book lovers. Share, discover, and read
               together.
             </p>
             {isAuthenticated ? (
               <button
                 onClick={() => router.push("/dashboard")}
-                className="px-8 md:px-12 py-4 border-4 border-old-ink bg-old-ink text-old-paper font-bold uppercase text-base md:text-lg
-                         hover:bg-gray-800 transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]"
+                className="px-8 md:px-12 py-4 border-4 font-bold uppercase text-base md:text-lg
+                         transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]"
+                style={{
+                  borderColor: 'hsl(var(--border))',
+                  backgroundColor: 'hsl(var(--primary))',
+                  color: 'hsl(var(--primary-foreground))'
+                }}
               >
                 📊 Go to Dashboard
               </button>
             ) : (
               <button
                 onClick={() => router.push("/register")}
-                className="px-8 md:px-12 py-4 border-4 border-old-ink bg-old-ink text-old-paper font-bold uppercase text-base md:text-lg
-                         hover:bg-gray-800 transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]"
+                className="px-8 md:px-12 py-4 border-4 font-bold uppercase text-base md:text-lg
+                         transition-all shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]"
+                style={{
+                  borderColor: 'hsl(var(--border))',
+                  backgroundColor: 'hsl(var(--primary))',
+                  color: 'hsl(var(--primary-foreground))'
+                }}
               >
                 Join Now - It's Free
               </button>
@@ -282,17 +357,18 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-old-ink text-old-paper py-8 md:py-12">
+      <footer 
+        className="py-8 md:py-12"
+        style={{
+          backgroundColor: 'hsl(var(--primary))',
+          color: 'hsl(var(--primary-foreground))'
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-3xl">📚</span>
-                <h4 className="text-xl font-bold uppercase tracking-wider">
-                  Amar Pathagar
-                </h4>
-              </div>
-              <p className="text-old-paper opacity-75 text-sm">
+              <Logo size="footer" className="mb-4" />
+              <p className="opacity-75 text-sm">
                 A trust-based community library where knowledge flows freely and
                 reputation matters.
               </p>
@@ -306,7 +382,7 @@ export default function LandingPage() {
                   <li>
                     <button
                       onClick={() => router.push("/dashboard")}
-                      className="text-old-paper opacity-75 hover:opacity-100 transition-opacity"
+                      className="opacity-75 hover:opacity-100 transition-opacity"
                     >
                       Dashboard
                     </button>
@@ -316,7 +392,7 @@ export default function LandingPage() {
                     <li>
                       <button
                         onClick={() => router.push("/login")}
-                        className="text-old-paper opacity-75 hover:opacity-100 transition-opacity"
+                        className="opacity-75 hover:opacity-100 transition-opacity"
                       >
                         Login
                       </button>
@@ -324,7 +400,7 @@ export default function LandingPage() {
                     <li>
                       <button
                         onClick={() => router.push("/register")}
-                        className="text-old-paper opacity-75 hover:opacity-100 transition-opacity"
+                        className="opacity-75 hover:opacity-100 transition-opacity"
                       >
                         Sign Up
                       </button>
@@ -338,7 +414,7 @@ export default function LandingPage() {
                         .getElementById("how-it-works")
                         ?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="text-old-paper opacity-75 hover:opacity-100 transition-opacity"
+                    className="opacity-75 hover:opacity-100 transition-opacity"
                   >
                     How It Works
                   </button>
@@ -349,23 +425,30 @@ export default function LandingPage() {
               <h5 className="font-bold uppercase tracking-wider mb-4 text-sm">
                 Contribute
               </h5>
-              <p className="text-old-paper opacity-75 text-sm mb-3">
+              <p className="opacity-75 text-sm mb-3">
                 This is an open-source project. Help us improve!
               </p>
               <a
                 href="https://github.com/nesohq/amar-pathagar"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 border-2 border-old-paper bg-transparent text-old-paper font-bold uppercase text-xs
-                         hover:bg-old-paper hover:text-old-ink transition-all"
+                className="inline-flex items-center gap-2 px-4 py-2 border-2 bg-transparent font-bold uppercase text-xs
+                         transition-all"
+                style={{
+                  borderColor: 'hsl(var(--primary-foreground))',
+                  color: 'hsl(var(--primary-foreground))'
+                }}
               >
                 <span>⭐</span>
                 <span>View on GitHub</span>
               </a>
             </div>
           </div>
-          <div className="border-t-2 border-old-paper border-opacity-20 pt-6 text-center">
-            <p className="text-old-paper opacity-75 text-sm">
+          <div 
+            className="border-t-2 border-opacity-20 pt-6 text-center"
+            style={{ borderColor: 'hsl(var(--primary-foreground))' }}
+          >
+            <p className="opacity-75 text-sm">
               © 2026 Amar Pathagar. A Trust-Based Reading Network by{" "}
               <a
                 href="https://github.com/nesohq"

@@ -7,6 +7,7 @@ import { useAuthStore } from '@/store/authStore'
 import { useToastStore } from '@/store/toastStore'
 import { ToastContainer } from './Toast'
 import NotificationBell from './NotificationBell'
+import { Logo } from './layout/logo'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { user, isAuthenticated, logout } = useAuthStore()
@@ -104,19 +105,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           
           <div className="relative z-10 flex items-start justify-between">
             {sidebarOpen ? (
-              <Link href="/dashboard" className="block flex-1" onClick={handleNavClick}>
-                <div className="flex items-center gap-3">
-                  <div className="text-5xl filter drop-shadow-lg">📚</div>
-                  <div>
-                    <h1 className="text-2xl font-bold uppercase tracking-wider text-old-paper leading-tight">
-                      Amar Pathagar
-                    </h1>
-                    <p className="text-xs text-old-paper opacity-75 uppercase tracking-widest mt-1">
-                      Community Library
-                    </p>
-                  </div>
-                </div>
-              </Link>
+              <div className="flex-1">
+                <Logo size="footer" variant="light" />
+              </div>
             ) : (
               <Link href="/dashboard" className="flex justify-center flex-1" onClick={handleNavClick}>
                 <div className="text-5xl filter drop-shadow-lg">📚</div>
