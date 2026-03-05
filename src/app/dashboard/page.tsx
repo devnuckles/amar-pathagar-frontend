@@ -172,14 +172,14 @@ export default function DashboardPage() {
         {/* Compact Header with Score */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
           {/* Welcome Card */}
-          <div className="lg:col-span-2 border-4 border-old-ink bg-white p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
+          <div className="lg:col-span-2 border-4 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
             <div className="flex items-center gap-4">
               <div className="text-5xl">👤</div>
               <div className="flex-1">
                 <h1 className="text-2xl md:text-3xl font-bold uppercase tracking-wider mb-1">
                   {user.full_name || user.username}
                 </h1>
-                <p className="text-sm text-old-grey uppercase tracking-wider">
+                <p className="text-sm uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>
                   Member Since{" "}
                   {new Date(user.created_at || Date.now()).getFullYear()}
                 </p>
@@ -188,14 +188,14 @@ export default function DashboardPage() {
                     <span className="text-xl">📖</span>
                     <div>
                       <p className="text-lg font-bold">{user.books_received}</p>
-                      <p className="text-xs text-old-grey uppercase">Read</p>
+                      <p className="text-xs uppercase" style={{ color: 'var(--muted-foreground)' }}>Read</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-xl">🤝</span>
                     <div>
                       <p className="text-lg font-bold">{user.books_shared}</p>
-                      <p className="text-xs text-old-grey uppercase">Shared</p>
+                      <p className="text-xs uppercase" style={{ color: 'var(--muted-foreground)' }}>Shared</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
@@ -204,7 +204,7 @@ export default function DashboardPage() {
                       <p className="text-lg font-bold">
                         {user.total_upvotes || 0}
                       </p>
-                      <p className="text-xs text-old-grey uppercase">Upvotes</p>
+                      <p className="text-xs uppercase" style={{ color: 'var(--muted-foreground)' }}>Upvotes</p>
                     </div>
                   </div>
                 </div>
@@ -213,7 +213,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Success Score Card */}
-          <div className="border-4 border-old-ink bg-gradient-to-br from-old-ink to-gray-800 text-old-paper p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] relative overflow-hidden">
+          <div className="border-4 bg-gradient-to-br from-old-ink to-gray-800 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] relative overflow-hidden" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
             <div className="absolute top-0 right-0 text-9xl opacity-10">⭐</div>
             <div className="relative z-10">
               <p className="text-xs uppercase tracking-widest opacity-75 mb-2">
@@ -239,7 +239,7 @@ export default function DashboardPage() {
 
         {/* Library Statistics - More Visual */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-          <div className="border-4 border-old-ink bg-gradient-to-br from-white to-gray-50 p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] relative overflow-hidden group hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] transition-all">
+          <div className="border-4 style={{ backgroundImage: 'linear-gradient(to bottom right, var(--card), var(--muted))' }} p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] relative overflow-hidden group hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] transition-all" style={{ borderColor: 'var(--border)' }}>
             <div className="absolute -bottom-4 -right-4 text-8xl opacity-5 group-hover:opacity-10 transition-opacity">
               📚
             </div>
@@ -249,7 +249,7 @@ export default function DashboardPage() {
                 <span className="vintage-badge text-xs">Total</span>
               </div>
               <p className="text-5xl font-bold mb-2">{stats.totalBooks}</p>
-              <p className="text-sm uppercase tracking-wider text-old-grey">
+              <p className="text-sm uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>
                 Books in Collection
               </p>
             </div>
@@ -298,21 +298,21 @@ export default function DashboardPage() {
 
         {/* My Book Requests - Compact and Classic */}
         {myRequests.length > 0 && (
-          <div className="border-4 border-old-ink bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
-            <div className="bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-3 border-b-4 border-old-ink flex items-center justify-between">
+          <div className="border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+            <div className="bg-gradient-to-r from-old-ink to-gray-800 p-3 border-b-4 flex items-center justify-between" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
               <div className="flex items-center gap-2">
                 <span className="text-xl">📬</span>
                 <h2 className="text-lg md:text-xl font-bold uppercase tracking-wider">
                   My Book Requests
                 </h2>
               </div>
-              <span className="px-2 py-1 bg-old-paper text-old-ink text-xs font-bold">
+              <span className="px-2 py-1 text-xs font-bold" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}>
                 {myRequests.length}
               </span>
             </div>
             <div className="p-4">
               {/* Table Header - Desktop Only */}
-              <div className="hidden md:grid md:grid-cols-12 gap-3 pb-2 mb-3 border-b-2 border-old-border text-xs uppercase tracking-wider text-old-grey font-bold">
+              <div className="hidden md:grid md:grid-cols-12 gap-3 pb-2 mb-3 border-b-2 text-xs uppercase tracking-wider font-bold" style={{ color: 'var(--muted-foreground)', borderColor: 'var(--border)' }}>
                 <div className="col-span-5">Book</div>
                 <div className="col-span-3">Author</div>
                 <div className="col-span-2">Requested</div>
@@ -324,7 +324,7 @@ export default function DashboardPage() {
                 {myRequests.map((request: any) => (
                   <div
                     key={request.id}
-                    className="grid grid-cols-1 md:grid-cols-12 gap-3 p-3 border-2 border-old-border hover:border-old-ink transition-all bg-gradient-to-r from-white to-gray-50 items-center"
+                    className="grid grid-cols-1 md:grid-cols-12 gap-3 p-3 border-2 hover: transition-all bg-gradient-to-r from-white to-gray-50 items-center" style={{ borderColor: 'var(--border)' }}
                   >
                     {/* Book Title */}
                     <div className="md:col-span-5">
@@ -343,14 +343,14 @@ export default function DashboardPage() {
 
                     {/* Author - Desktop */}
                     <div className="md:col-span-3 hidden md:block">
-                      <p className="text-sm text-old-grey truncate">
+                      <p className="text-sm truncate" style={{ color: 'var(--muted-foreground)' }}>
                         {request.book?.author || "Unknown Author"}
                       </p>
                     </div>
 
                     {/* Date - Desktop */}
                     <div className="md:col-span-2 hidden md:block">
-                      <p className="text-xs text-old-grey">
+                      <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
                         {new Date(request.requested_at).toLocaleDateString(
                           "en-US",
                           {
@@ -364,8 +364,7 @@ export default function DashboardPage() {
                     {/* Actions */}
                     <div className="md:col-span-2 flex gap-2 justify-end">
                       <button
-                        className="px-3 py-1 border-2 border-old-ink bg-white hover:bg-old-ink hover:text-old-paper 
-                                 font-bold uppercase text-xs tracking-wider transition-all"
+                        className="px-3 py-1 border-2 hover: hover: font-bold uppercase text-xs tracking-wider transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                         onClick={() => router.push(`/books/${request.book_id}`)}
                         title="View book details"
                       >
@@ -387,7 +386,7 @@ export default function DashboardPage() {
                     </div>
 
                     {/* Mobile Info */}
-                    <div className="md:hidden text-xs text-old-grey flex items-center gap-3">
+                    <div className="md:hidden text-xs flex items-center gap-3" style={{ color: 'var(--muted-foreground)' }}>
                       <span>{request.book?.author || "Unknown Author"}</span>
                       <span>•</span>
                       <span>
@@ -409,7 +408,7 @@ export default function DashboardPage() {
 
         {/* Currently Reading Books */}
         {myCurrentBooks.length > 0 && (
-          <div className="border-4 border-blue-600 bg-white shadow-[6px_6px_0px_0px_rgba(37,99,235,0.3)]">
+          <div className="border-4 border-blue-600 shadow-[6px_6px_0px_0px_rgba(37,99,235,0.3)]" style={{ backgroundColor: 'var(--card)' }}>
             <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-3 border-b-4 border-blue-600 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="text-xl">📖</span>
@@ -417,7 +416,7 @@ export default function DashboardPage() {
                   Currently Reading
                 </h2>
               </div>
-              <span className="px-2 py-1 bg-white text-blue-600 text-xs font-bold">
+              <span className="px-2 py-1 text-blue-600 text-xs font-bold" style={{ backgroundColor: 'var(--card)' }}>
                 {myCurrentBooks.length}
               </span>
             </div>
@@ -434,13 +433,12 @@ export default function DashboardPage() {
                         <h3 className="font-bold uppercase text-lg mb-1 truncate">
                           {book.title}
                         </h3>
-                        <p className="text-sm text-old-grey mb-3">
+                        <p className="text-sm mb-3" style={{ color: 'var(--muted-foreground)' }}>
                           {book.author}
                         </p>
                         <div className="flex flex-wrap gap-2">
                           <button
-                            className="px-4 py-2 border-2 border-blue-600 bg-white text-blue-600 hover:bg-blue-600 hover:text-white 
-                                     font-bold uppercase text-xs tracking-wider transition-all"
+                            className="px-4 py-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-bold uppercase text-xs tracking-wider transition-all" style={{ backgroundColor: 'var(--card)' }}
                             onClick={() => router.push(`/books/${book.id}`)}
                           >
                             View Details
@@ -466,7 +464,7 @@ export default function DashboardPage() {
 
         {/* Active Handover Threads */}
         {handoverThreads.length > 0 && (
-          <div className="border-4 border-orange-600 bg-white shadow-[6px_6px_0px_0px_rgba(234,88,12,0.3)]">
+          <div className="border-4 border-orange-600 shadow-[6px_6px_0px_0px_rgba(234,88,12,0.3)]" style={{ backgroundColor: 'var(--card)' }}>
             <div className="bg-gradient-to-r from-orange-600 to-orange-800 text-white p-3 border-b-4 border-orange-600 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="text-xl">🔄</span>
@@ -474,7 +472,7 @@ export default function DashboardPage() {
                   Active Handovers
                 </h2>
               </div>
-              <span className="px-2 py-1 bg-white text-orange-600 text-xs font-bold">
+              <span className="px-2 py-1 text-orange-600 text-xs font-bold" style={{ backgroundColor: 'var(--card)' }}>
                 {handoverThreads.length}
               </span>
             </div>
@@ -490,17 +488,17 @@ export default function DashboardPage() {
                         <h3 className="font-bold uppercase text-sm mb-2 truncate">
                           {thread.book?.title || "Unknown Book"}
                         </h3>
-                        <div className="space-y-1 text-xs text-old-grey mb-3">
+                        <div className="space-y-1 text-xs mb-3" style={{ color: 'var(--muted-foreground)' }}>
                           <div className="flex items-center gap-2">
                             <span>From:</span>
-                            <span className="font-bold text-old-ink">
+                            <span className="font-bold" style={{ color: 'var(--foreground)' }}>
                               {thread.current_holder?.full_name ||
                                 thread.current_holder?.username}
                             </span>
                           </div>
                           <div className="flex items-center gap-2">
                             <span>To:</span>
-                            <span className="font-bold text-old-ink">
+                            <span className="font-bold" style={{ color: 'var(--foreground)' }}>
                               {thread.next_reader?.full_name ||
                                 thread.next_reader?.username}
                             </span>
@@ -522,8 +520,7 @@ export default function DashboardPage() {
                           </div>
                         </div>
                         <button
-                          className="px-4 py-2 border-2 border-orange-600 bg-white text-orange-600 hover:bg-orange-600 hover:text-white 
-                                   font-bold uppercase text-xs tracking-wider transition-all"
+                          className="px-4 py-2 border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white font-bold uppercase text-xs tracking-wider transition-all" style={{ backgroundColor: 'var(--card)' }}
                           onClick={() => router.push(`/handover/${thread.id}`)}
                         >
                           Open Thread →
@@ -540,8 +537,8 @@ export default function DashboardPage() {
 
         {/* Reading History */}
         {readingHistory.length > 0 && (
-          <div className="border-4 border-old-ink bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
-            <div className="bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-3 border-b-4 border-old-ink flex items-center justify-between">
+          <div className="border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+            <div className="bg-gradient-to-r from-old-ink to-gray-800 p-3 border-b-4 flex items-center justify-between" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
               <div className="flex items-center gap-2">
                 <span className="text-xl">📚</span>
                 <h2 className="text-lg md:text-xl font-bold uppercase tracking-wider">
@@ -554,7 +551,7 @@ export default function DashboardPage() {
                 {readingHistory.map((history: any) => (
                   <div
                     key={history.id}
-                    className="flex items-center justify-between p-3 border-2 border-old-border hover:border-old-ink transition-all bg-gradient-to-r from-white to-gray-50"
+                    className="flex items-center justify-between p-3 border-2 hover: transition-all bg-gradient-to-r from-white to-gray-50" style={{ borderColor: 'var(--border)' }}
                   >
                     <div className="flex items-center gap-3 flex-1 min-w-0">
                       <span className="text-2xl">✓</span>
@@ -562,7 +559,7 @@ export default function DashboardPage() {
                         <h3 className="font-bold uppercase text-sm truncate">
                           {history.book?.title || "Unknown Book"}
                         </h3>
-                        <p className="text-xs text-old-grey">
+                        <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
                           {history.end_date
                             ? `Completed ${new Date(history.end_date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}`
                             : `Started ${new Date(history.start_date).toLocaleDateString("en-US", { month: "short", day: "numeric" })}`}
@@ -570,8 +567,7 @@ export default function DashboardPage() {
                       </div>
                     </div>
                     <button
-                      className="px-3 py-1 border-2 border-old-ink bg-white hover:bg-old-ink hover:text-old-paper 
-                               font-bold uppercase text-xs tracking-wider transition-all"
+                      className="px-3 py-1 border-2 hover: hover: font-bold uppercase text-xs tracking-wider transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                       onClick={() => router.push(`/books/${history.book_id}`)}
                     >
                       View
@@ -584,8 +580,8 @@ export default function DashboardPage() {
         )}
 
         {/* Quick Navigation - More Visual */}
-        <div className="border-4 border-old-ink bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
-          <div className="bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-4 border-b-4 border-old-ink">
+        <div className="border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+          <div className="bg-gradient-to-r from-old-ink to-gray-800 p-4 border-b-4" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
             <h2 className="text-xl md:text-2xl font-bold uppercase tracking-wider text-center flex items-center justify-center gap-3">
               <span className="text-2xl">🧭</span>
               Quick Navigation
@@ -680,8 +676,7 @@ function NavCard({
   return (
     <button
       onClick={onClick}
-      className="p-5 border-4 border-old-border hover:border-old-ink hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] 
-               transition-all bg-gradient-to-br from-white to-gray-50 group"
+      className="p-5 border-4 hover: hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] transition-all style={{ backgroundImage: 'linear-gradient(to bottom right, var(--card), var(--muted))' }} group" style={{ borderColor: 'var(--border)' }}
     >
       <div className="text-center">
         <div className="text-5xl mb-3 group-hover:scale-125 transition-transform">
@@ -690,7 +685,7 @@ function NavCard({
         <p className="font-bold uppercase tracking-wider text-sm mb-1">
           {title}
         </p>
-        <p className="text-xs text-old-grey">{description}</p>
+        <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>{description}</p>
       </div>
     </button>
   );

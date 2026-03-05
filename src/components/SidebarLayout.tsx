@@ -82,7 +82,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Sidebar */}
       <aside className={`
         fixed lg:sticky top-0 left-0 h-screen z-50
-        bg-gradient-to-b from-old-paper via-white to-old-paper
+        style={{ backgroundImage: 'linear-gradient(to bottom, var(--background), var(--card), var(--background))' }}
         border-r-4 border-old-ink 
         shadow-[8px_0_16px_rgba(0,0,0,0.15)]
         transition-all duration-300 ease-in-out
@@ -94,7 +94,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <div className={`
           relative overflow-hidden
           border-b-4 border-old-ink 
-          bg-gradient-to-br from-old-ink via-gray-800 to-old-ink
+          style={{ backgroundImage: 'linear-gradient(to bottom right, var(--primary), var(--secondary), var(--primary))' }}
           ${sidebarOpen ? 'p-6' : 'p-4'}
         `}>
           <div className="absolute inset-0 opacity-5">
@@ -117,12 +117,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             {/* Toggle Button */}
             <button
               onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="p-2 bg-old-paper text-old-ink
-                       border-2 border-old-paper
-                       hover:bg-white hover:border-white
-                       transition-all duration-200
-                       shadow-md hover:shadow-lg
-                       group flex-shrink-0"
+              className="p-2 border-2 border-old-paper hover: hover:border-white transition-all duration-200 shadow-md hover:shadow-lg group flex-shrink-0" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}
               title={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
             >
               <svg className="w-4 h-4 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -140,7 +135,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {user && (
           <div className={`
             border-b-2 border-old-border
-            bg-gradient-to-br from-white to-gray-50
+            style={{ backgroundImage: 'linear-gradient(to bottom right, var(--card), var(--muted))' }}
             ${sidebarOpen ? 'p-4' : 'p-3'}
           `}>
             <button
@@ -159,29 +154,27 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               {sidebarOpen ? (
                 <div className="flex items-center gap-3">
                   <div className="relative">
-                    <div className="w-12 h-12 border-3 border-old-ink bg-gradient-to-br from-old-paper to-amber-100 
-                                  flex items-center justify-center text-2xl
-                                  shadow-md group-hover:shadow-lg transition-shadow">
+                    <div className="w-12 h-12 border-3 bg-gradient-to-br from-old-paper to-amber-100 flex items-center justify-center text-2xl shadow-md group-hover:shadow-lg transition-shadow" style={{ borderColor: 'var(--border)' }}>
                       👤
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 border-2 border-white rounded-full" 
                          title="Online" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="font-bold text-sm truncate text-old-ink group-hover:text-black">
+                    <div className="font-bold text-sm truncate group-hover:text-black" style={{ color: 'var(--foreground)' }}>
                       {user.full_name || user.username}
                     </div>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className="text-xs text-old-grey uppercase">Score:</span>
-                      <span className="text-xs font-bold text-old-ink">{user.success_score}</span>
+                      <span className="text-xs uppercase" style={{ color: 'var(--muted-foreground)' }}>Score:</span>
+                      <span className="text-xs font-bold" style={{ color: 'var(--foreground)' }}>{user.success_score}</span>
                       {user.role === 'admin' && (
-                        <span className="px-1.5 py-0.5 bg-old-ink text-old-paper text-xs font-bold uppercase">
+                        <span className="px-1.5 py-0.5 text-xs font-bold uppercase" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)' }}>
                           Admin
                         </span>
                       )}
                     </div>
                   </div>
-                  <svg className="w-4 h-4 text-old-grey group-hover:text-old-ink transition-colors" 
+                  <svg className="w-4 h-4 group-hover: transition-colors" style={{ color: 'var(--muted-foreground)' }} 
                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -189,9 +182,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               ) : (
                 <div className="flex justify-center">
                   <div className="relative">
-                    <div className="w-12 h-12 border-3 border-old-ink bg-gradient-to-br from-old-paper to-amber-100 
-                                  flex items-center justify-center text-2xl
-                                  shadow-md group-hover:shadow-lg transition-shadow">
+                    <div className="w-12 h-12 border-3 bg-gradient-to-br from-old-paper to-amber-100 flex items-center justify-center text-2xl shadow-md group-hover:shadow-lg transition-shadow" style={{ borderColor: 'var(--border)' }}>
                       👤
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full" />
@@ -204,15 +195,10 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
         {/* Maximize Button - Only visible when collapsed on desktop */}
         {!sidebarOpen && !isMobile && (
-          <div className="px-2 py-3 border-b-2 border-old-border bg-gradient-to-br from-white to-gray-50">
+          <div className="px-2 py-3 border-b-2 style={{ backgroundImage: 'linear-gradient(to bottom right, var(--card), var(--muted))' }}" style={{ borderColor: 'var(--border)' }}>
             <button
               onClick={() => setSidebarOpen(true)}
-              className="w-full p-3 bg-old-paper text-old-ink
-                       border-2 border-old-ink
-                       hover:bg-old-ink hover:text-old-paper
-                       transition-all duration-200
-                       shadow-md hover:shadow-lg
-                       group flex justify-center"
+              className="w-full p-3 border-2 hover: hover: transition-all duration-200 shadow-md hover:shadow-lg group flex justify-center" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
               title="Expand sidebar"
             >
               <svg className="w-5 h-5 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -306,21 +292,16 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </nav>
 
         {/* Bottom Actions */}
-        <div className="border-t-4 border-old-ink bg-gradient-to-br from-white to-gray-50 p-3 space-y-2">
+        <div className="border-t-4 style={{ backgroundImage: 'linear-gradient(to bottom right, var(--card), var(--muted))' }} p-3 space-y-2" style={{ borderColor: 'var(--border)' }}>
           {sidebarOpen ? (
             <>
               <div className="px-2 py-2 flex items-center justify-between">
-                <span className="text-xs uppercase tracking-wider text-old-grey font-bold">Notifications</span>
+                <span className="text-xs uppercase tracking-wider font-bold" style={{ color: 'var(--muted-foreground)' }}>Notifications</span>
                 <NotificationBell />
               </div>
               <button
                 onClick={handleLogout}
-                className="w-full px-4 py-3 border-3 border-old-ink bg-white text-old-ink 
-                         font-bold uppercase text-xs tracking-wider
-                         hover:bg-old-ink hover:text-old-paper 
-                         transition-all duration-200
-                         shadow-md hover:shadow-lg
-                         flex items-center justify-center gap-2 group"
+                className="w-full px-4 py-3 border-3 font-bold uppercase text-xs tracking-wider hover: hover: transition-all duration-200 shadow-md hover:shadow-lg flex items-center justify-center gap-2 group" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
               >
                 <span className="text-lg group-hover:scale-110 transition-transform">🚪</span>
                 <span>Logout</span>
@@ -333,11 +314,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </div>
               <button
                 onClick={handleLogout}
-                className="w-full p-3 border-3 border-old-ink bg-white text-old-ink 
-                         hover:bg-old-ink hover:text-old-paper 
-                         transition-all duration-200
-                         shadow-md hover:shadow-lg
-                         flex justify-center group"
+                className="w-full p-3 border-3 hover: hover: transition-all duration-200 shadow-md hover:shadow-lg flex justify-center group" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                 title="Logout"
               >
                 <span className="text-xl group-hover:scale-110 transition-transform">🚪</span>
@@ -350,13 +327,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-h-screen">
         {/* Mobile Top Bar */}
-        <header className="lg:hidden bg-white border-b-4 border-old-ink shadow-md sticky top-0 z-30">
+        <header className="lg:hidden border-b-4 shadow-md sticky top-0 z-30" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
           <div className="px-4 py-4 flex items-center justify-between">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="p-2 border-3 border-old-ink text-old-ink 
-                       hover:bg-old-ink hover:text-old-paper 
-                       transition-all duration-200 shadow-md"
+              className="p-2 border-3 hover: hover: transition-all duration-200 shadow-md" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
@@ -364,7 +339,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </button>
             <Link href="/dashboard" className="flex items-center gap-2">
               <span className="text-3xl">📚</span>
-              <h1 className="text-xl font-bold uppercase tracking-wider text-old-ink">
+              <h1 className="text-xl font-bold uppercase tracking-wider" style={{ color: 'var(--foreground)' }}>
                 Amar Pathagar
               </h1>
             </Link>
@@ -378,7 +353,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </main>
 
         {/* Footer */}
-        <footer className="bg-old-ink text-old-paper border-t-4 border-black mt-auto">
+        <footer className="border-t-4 border-black mt-auto" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)' }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
               <div className="flex items-center gap-2">
@@ -475,7 +450,7 @@ function SidebarLink({
         <span className="flex-1">{label}</span>
       )}
       {!collapsed && active && (
-        <span className="text-old-paper">●</span>
+        <span className="" style={{ color: 'var(--primary-foreground)' }}>●</span>
       )}
     </Link>
   )

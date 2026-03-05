@@ -69,12 +69,12 @@ export default function BooksPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
       <div className="space-y-6">
         {/* Header - Compact */}
-        <div className="border-4 border-old-ink bg-white p-4 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
+        <div className="border-4 p-4 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
           <div className="flex items-center gap-3 mb-2">
             <span className="text-3xl md:text-4xl">📚</span>
             <div>
               <h1 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">Book Collection</h1>
-              <p className="text-old-grey text-xs md:text-sm uppercase tracking-wider">
+              <p className="text-xs md:text-sm uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>
                 {books.length} {books.length === 1 ? 'Book' : 'Books'} Available
               </p>
             </div>
@@ -82,7 +82,7 @@ export default function BooksPage() {
         </div>
 
         {/* Search & Filters - Compact */}
-        <div className="border-4 border-old-ink bg-white p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
+        <div className="border-4 p-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
           <div className="flex flex-col md:flex-row gap-3">
             {/* Search */}
             <div className="flex-1">
@@ -93,12 +93,11 @@ export default function BooksPage() {
                   onChange={(e) => setSearch(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
                   placeholder="Search by title, author..."
-                  className="flex-1 px-3 py-2 border-2 border-old-border focus:border-old-ink outline-none text-sm"
+                  className="flex-1 px-3 py-2 border-2 focus: outline-none text-sm" style={{ borderColor: 'var(--border)' }}
                 />
                 <button 
                   onClick={handleSearch} 
-                  className="px-6 py-2 border-2 border-old-ink bg-old-ink text-old-paper font-bold uppercase text-xs
-                           hover:bg-white hover:text-old-ink transition-all"
+                  className="px-6 py-2 border-2 font-bold uppercase text-xs hover: hover: transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                 >
                   Search
                 </button>
@@ -113,7 +112,7 @@ export default function BooksPage() {
                   setStatusFilter(e.target.value)
                   loadBooks()
                 }}
-                className="w-full px-3 py-2 border-2 border-old-border focus:border-old-ink outline-none text-sm"
+                className="w-full px-3 py-2 border-2 focus: outline-none text-sm" style={{ borderColor: 'var(--border)' }}
               >
                 <option value="">All Status</option>
                 <option value="available">Available</option>
@@ -126,12 +125,12 @@ export default function BooksPage() {
 
         {/* Books Grid */}
         {loading ? (
-          <div className="text-center py-12 border-4 border-old-ink bg-white">
-            <p className="text-old-grey uppercase tracking-wider text-sm">Loading books...</p>
+          <div className="text-center py-12 border-4" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+            <p className="uppercase tracking-wider text-sm" style={{ color: 'var(--muted-foreground)' }}>Loading books...</p>
           </div>
         ) : books.length === 0 ? (
-          <div className="text-center py-12 border-4 border-old-ink bg-white">
-            <p className="text-old-grey uppercase tracking-wider text-sm">No books found</p>
+          <div className="text-center py-12 border-4" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+            <p className="uppercase tracking-wider text-sm" style={{ color: 'var(--muted-foreground)' }}>No books found</p>
           </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
@@ -159,10 +158,10 @@ function BookCard({ book, onBookmark }: { book: Book; onBookmark: (id: string, t
   }
 
   return (
-    <div className="border-2 border-old-ink bg-white hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] transition-all group cursor-pointer"
+    <div className="border-2 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] transition-all group cursor-pointer" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}
          onClick={() => router.push(`/books/${book.id}`)}>
       {/* Book Cover - Smaller */}
-      <div className="aspect-[3/4] bg-old-border flex items-center justify-center border-b-2 border-old-ink relative overflow-hidden">
+      <div className="aspect-[3/4] bg-old-border flex items-center justify-center border-b-2 relative overflow-hidden" style={{ borderColor: 'var(--border)' }}>
         {book.cover_url ? (
           <img src={book.cover_url} alt={book.title} className="w-full h-full object-cover" />
         ) : (
@@ -176,16 +175,16 @@ function BookCard({ book, onBookmark }: { book: Book; onBookmark: (id: string, t
 
       {/* Book Info - Compact */}
       <div className="p-2.5">
-        <h3 className="font-bold uppercase text-xs leading-tight mb-1 line-clamp-2 min-h-[2rem] group-hover:text-old-grey transition-colors">
+        <h3 className="font-bold uppercase text-xs leading-tight mb-1 line-clamp-2 min-h-[2rem] group-hover: transition-colors" style={{ color: 'var(--muted-foreground)' }}>
           {book.title}
         </h3>
         
-        <p className="text-old-grey text-xs mb-2 truncate">
+        <p className="text-xs mb-2 truncate" style={{ color: 'var(--muted-foreground)' }}>
           {book.author}
         </p>
 
         {/* Stats - Inline */}
-        <div className="flex items-center justify-between text-xs text-old-grey mb-2 pb-2 border-b border-old-border">
+        <div className="flex items-center justify-between text-xs mb-2 pb-2 border-b" style={{ color: 'var(--muted-foreground)', borderColor: 'var(--border)' }}>
           <span className="flex items-center gap-1">
             <span className="opacity-50">📖</span>
             {book.total_reads}
@@ -210,7 +209,7 @@ function BookCard({ book, onBookmark }: { book: Book; onBookmark: (id: string, t
               e.stopPropagation()
               onBookmark(book.id, 'like')
             }}
-            className="flex-1 py-1 border border-old-border hover:border-red-400 hover:bg-red-50 transition-all text-sm"
+            className="flex-1 py-1 border hover:border-red-400 hover:bg-red-50 transition-all text-sm" style={{ borderColor: 'var(--border)' }}
             title="Like"
           >
             ❤️
@@ -220,7 +219,7 @@ function BookCard({ book, onBookmark }: { book: Book; onBookmark: (id: string, t
               e.stopPropagation()
               onBookmark(book.id, 'bookmark')
             }}
-            className="flex-1 py-1 border border-old-border hover:border-blue-400 hover:bg-blue-50 transition-all text-sm"
+            className="flex-1 py-1 border hover:border-blue-400 hover:bg-blue-50 transition-all text-sm" style={{ borderColor: 'var(--border)' }}
             title="Bookmark"
           >
             🔖
@@ -230,7 +229,7 @@ function BookCard({ book, onBookmark }: { book: Book; onBookmark: (id: string, t
               e.stopPropagation()
               onBookmark(book.id, 'priority')
             }}
-            className="flex-1 py-1 border border-old-border hover:border-yellow-400 hover:bg-yellow-50 transition-all text-sm"
+            className="flex-1 py-1 border hover:border-yellow-400 hover:bg-yellow-50 transition-all text-sm" style={{ borderColor: 'var(--border)' }}
             title="Priority"
           >
             ⭐

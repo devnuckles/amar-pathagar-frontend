@@ -66,9 +66,20 @@ export default function NotificationBell() {
       
       {/* Notification Panel - Fixed at top right */}
       <div 
-        className="fixed top-4 right-4 w-[calc(100vw-2rem)] sm:w-96 border-4 border-old-ink bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] z-[999] max-h-[calc(100vh-2rem)] overflow-hidden flex flex-col"
+        className="fixed top-4 right-4 w-[calc(100vw-2rem)] sm:w-96 border-4 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] z-[999] max-h-[calc(100vh-2rem)] overflow-hidden flex flex-col"
+        style={{
+          borderColor: 'var(--border)',
+          backgroundColor: 'var(--card)'
+        }}
       >
-        <div className="bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-4 flex items-center justify-between border-b-4 border-old-ink flex-shrink-0">
+        <div 
+          className="p-4 flex items-center justify-between border-b-4 flex-shrink-0"
+          style={{
+            background: 'linear-gradient(to right, var(--primary), var(--secondary))',
+            color: 'var(--primary-foreground)',
+            borderColor: 'var(--border)'
+          }}
+        >
           <div className="flex items-center gap-2">
             <span className="text-2xl">🔔</span>
             <h3 className="font-bold uppercase text-sm tracking-wider">Notifications</h3>
@@ -89,7 +100,18 @@ export default function NotificationBell() {
             )}
             <button
               onClick={() => setShowDropdown(false)}
-              className="p-1 hover:bg-old-paper hover:text-old-ink transition-all rounded"
+              className="p-1 transition-all rounded"
+              style={{
+                color: 'var(--primary-foreground)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--card)';
+                e.currentTarget.style.color = 'var(--foreground)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = 'var(--primary-foreground)';
+              }}
               title="Close"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,16 +125,29 @@ export default function NotificationBell() {
           {notifications.length === 0 ? (
             <div className="p-8 text-center">
               <span className="text-5xl mb-3 block">📭</span>
-              <p className="text-old-grey text-sm uppercase tracking-wider">No notifications</p>
+              <p className="text-sm uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>No notifications</p>
             </div>
           ) : (
-            <div className="divide-y-2 divide-old-border">
+            <div className="divide-y-2" style={{ borderColor: 'var(--border)' }}>
               {notifications.map((notif: any) => (
                 <div
                   key={notif.id}
-                  className={`p-4 hover:bg-gradient-to-r hover:from-old-paper hover:to-amber-50 transition-all cursor-pointer ${
+                  className={`p-4 transition-all cursor-pointer ${
                     !notif.is_read ? 'bg-blue-50 border-l-4 border-blue-600' : ''
                   }`}
+                  style={{
+                    backgroundColor: notif.is_read ? 'transparent' : undefined
+                  }}
+                  onMouseEnter={(e) => {
+                    if (notif.is_read) {
+                      e.currentTarget.style.background = 'linear-gradient(to right, var(--accent), var(--muted))';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (notif.is_read) {
+                      e.currentTarget.style.background = 'transparent';
+                    }
+                  }}
                   onClick={() => {
                     if (!notif.is_read) handleMarkAsRead(notif.id)
                     if (notif.link) {
@@ -130,9 +165,9 @@ export default function NotificationBell() {
                        notif.type === 'idea_vote' ? '💡' : '🔔'}
                     </span>
                     <div className="flex-1 min-w-0">
-                      <p className="font-bold text-sm mb-1 uppercase tracking-wide">{notif.title}</p>
-                      <p className="text-sm text-old-grey mb-2">{notif.message}</p>
-                      <p className="text-xs text-old-grey uppercase">
+                      <p className="font-bold text-sm mb-1 uppercase tracking-wide" style={{ color: 'var(--foreground)' }}>{notif.title}</p>
+                      <p className="text-sm mb-2" style={{ color: 'var(--muted-foreground)' }}>{notif.message}</p>
+                      <p className="text-xs uppercase" style={{ color: 'var(--muted-foreground)' }}>
                         {new Date(notif.created_at).toLocaleDateString('en-US', {
                           month: 'short',
                           day: 'numeric',
@@ -158,7 +193,19 @@ export default function NotificationBell() {
     <>
       <button
         onClick={() => setShowDropdown(!showDropdown)}
-        className="relative px-3 py-2 border-2 border-old-ink hover:bg-old-ink hover:text-old-paper transition-all"
+        className="relative px-3 py-2 border-2 transition-all"
+        style={{
+          borderColor: 'var(--border)',
+          color: 'var(--foreground)'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = 'var(--primary)';
+          e.currentTarget.style.color = 'var(--primary-foreground)';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = 'transparent';
+          e.currentTarget.style.color = 'var(--foreground)';
+        }}
         title="Notifications"
       >
         <span className="text-xl">🔔</span>

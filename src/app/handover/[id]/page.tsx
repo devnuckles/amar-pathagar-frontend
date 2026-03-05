@@ -87,7 +87,7 @@ export default function HandoverThreadDetailPage() {
     return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
         <div className="text-center py-12">
-          <p className="text-old-grey uppercase tracking-wider">Loading...</p>
+          <p className="uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>Loading...</p>
         </div>
       </div>
     )
@@ -97,11 +97,10 @@ export default function HandoverThreadDetailPage() {
     return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
         <div className="text-center py-12">
-          <p className="text-old-grey uppercase tracking-wider">Thread not found</p>
+          <p className="uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>Thread not found</p>
           <button
             onClick={() => router.push('/handover')}
-            className="mt-4 px-6 py-3 border-4 border-old-ink bg-old-ink text-old-paper hover:bg-gray-800 
-                     font-bold uppercase tracking-wider transition-all"
+            className="mt-4 px-6 py-3 border-4 hover:bg-gray-800 font-bold uppercase tracking-wider transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
           >
             Back to Handovers
           </button>
@@ -121,13 +120,13 @@ export default function HandoverThreadDetailPage() {
         {/* Back Button */}
         <button
           onClick={() => router.push('/handover')}
-          className="flex items-center gap-2 px-4 py-2 border-2 border-old-ink hover:bg-old-ink hover:text-old-paper transition-all text-sm font-bold uppercase"
+          className="flex items-center gap-2 px-4 py-2 border-2 hover: hover: transition-all text-sm font-bold uppercase" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
         >
           ← Back to Handovers
         </button>
 
         {/* Thread Header */}
-        <div className="border-4 border-old-ink bg-gradient-to-br from-old-paper to-amber-50 p-4 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
+        <div className="border-4 bg-gradient-to-br from-old-paper to-amber-50 p-4 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ borderColor: 'var(--border)' }}>
           <div className="flex flex-col md:flex-row gap-4 md:gap-6">
             {/* Book Info */}
             <div className="flex items-start gap-4 flex-1">
@@ -136,17 +135,17 @@ export default function HandoverThreadDetailPage() {
                 <h1 className="text-2xl md:text-3xl font-bold uppercase tracking-wider mb-2 leading-tight">
                   {thread.book?.title || 'Unknown Book'}
                 </h1>
-                <p className="text-base md:text-lg text-old-grey mb-4">{thread.book?.author || 'Unknown Author'}</p>
+                <p className="text-base md:text-lg mb-4" style={{ color: 'var(--muted-foreground)' }}>{thread.book?.author || 'Unknown Author'}</p>
 
                 {/* Participants */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-                  <div className="border-2 border-old-ink p-3 bg-white">
-                    <p className="text-xs uppercase text-old-grey mb-1 font-bold">Current Holder</p>
+                  <div className="border-2 p-3" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+                    <p className="text-xs uppercase mb-1 font-bold" style={{ color: 'var(--muted-foreground)' }}>Current Holder</p>
                     <p className="font-bold">{thread.current_holder?.full_name || thread.current_holder?.username}</p>
                     {isSending && <span className="text-xs text-blue-600 font-bold">(You)</span>}
                   </div>
-                  <div className="border-2 border-old-ink p-3 bg-white">
-                    <p className="text-xs uppercase text-old-grey mb-1 font-bold">Next Holder</p>
+                  <div className="border-2 p-3" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+                    <p className="text-xs uppercase mb-1 font-bold" style={{ color: 'var(--muted-foreground)' }}>Next Holder</p>
                     <p className="font-bold">{thread.next_holder?.full_name || thread.next_holder?.username}</p>
                     {!isSending && <span className="text-xs text-blue-600 font-bold">(You)</span>}
                   </div>
@@ -184,8 +183,7 @@ export default function HandoverThreadDetailPage() {
               </span>
               <button
                 onClick={() => router.push(`/books/${thread.book_id}`)}
-                className="px-4 py-2 border-2 border-old-ink bg-white hover:bg-old-ink hover:text-old-paper 
-                         font-bold uppercase text-xs tracking-wider transition-all"
+                className="px-4 py-2 border-2 hover: hover: font-bold uppercase text-xs tracking-wider transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
               >
                 View Book
               </button>
@@ -194,13 +192,13 @@ export default function HandoverThreadDetailPage() {
         </div>
 
         {/* Messages Thread */}
-        <div className="border-4 border-old-ink bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] flex flex-col" style={{ height: '600px' }}>
-          <div className="bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-3 md:p-4 border-b-4 border-old-ink flex items-center justify-between flex-shrink-0">
+        <div className="border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] flex flex-col" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)', height: '600px' }}>
+          <div className="bg-gradient-to-r from-old-ink to-gray-800 p-3 md:p-4 border-b-4 flex items-center justify-between flex-shrink-0" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
             <div className="flex items-center gap-2">
               <span className="text-xl">💬</span>
               <h2 className="text-lg md:text-xl font-bold uppercase tracking-wider">Conversation</h2>
             </div>
-            <span className="px-2 py-1 bg-old-paper text-old-ink text-xs font-bold">
+            <span className="px-2 py-1 text-xs font-bold" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}>
               {messages.length} {messages.length === 1 ? 'Message' : 'Messages'}
             </span>
           </div>
@@ -210,8 +208,8 @@ export default function HandoverThreadDetailPage() {
             {messages.length === 0 ? (
               <div className="text-center py-12">
                 <span className="text-5xl mb-3 block">💬</span>
-                <p className="text-old-grey text-sm uppercase tracking-wider">No messages yet</p>
-                <p className="text-old-grey text-xs mt-1">Start the conversation!</p>
+                <p className="text-sm uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>No messages yet</p>
+                <p className="text-xs mt-1" style={{ color: 'var(--muted-foreground)' }}>Start the conversation!</p>
               </div>
             ) : (
               messages.map((msg: any) => {
@@ -236,7 +234,7 @@ export default function HandoverThreadDetailPage() {
                         <p className="text-xs font-bold uppercase">
                           {isMyMessage ? 'You' : msg.user?.full_name || msg.user?.username || 'Unknown'}
                         </p>
-                        <span className="text-xs text-old-grey">
+                        <span className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
                           {new Date(msg.created_at).toLocaleTimeString('en-US', { 
                             hour: '2-digit', 
                             minute: '2-digit' 
@@ -260,22 +258,20 @@ export default function HandoverThreadDetailPage() {
 
           {/* Message Input */}
           {thread.status === 'active' && (
-            <form onSubmit={handleSendMessage} className="border-t-4 border-old-ink p-4 bg-gray-50 flex-shrink-0">
+            <form onSubmit={handleSendMessage} className="border-t-4 p-4 flex-shrink-0" style={{ backgroundColor: 'var(--muted)', borderColor: 'var(--border)' }}>
               <div className="flex gap-2">
                 <input
                   type="text"
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   placeholder="Type your message..."
-                  className="flex-1 px-4 py-3 border-2 border-old-border focus:border-old-ink outline-none text-sm md:text-base"
+                  className="flex-1 px-4 py-3 border-2 focus: outline-none text-sm md:text-base" style={{ borderColor: 'var(--border)' }}
                   disabled={sending}
                 />
                 <button
                   type="submit"
                   disabled={!newMessage.trim() || sending}
-                  className="px-4 md:px-6 py-3 border-4 border-old-ink bg-old-ink text-old-paper hover:bg-gray-800 
-                           font-bold uppercase text-xs md:text-sm tracking-wider transition-all
-                           disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-4 md:px-6 py-3 border-4 hover:bg-gray-800 font-bold uppercase text-xs md:text-sm tracking-wider transition-all disabled:opacity-50 disabled:cursor-not-allowed" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                 >
                   {sending ? 'Sending...' : 'Send'}
                 </button>

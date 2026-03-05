@@ -55,18 +55,18 @@ export default function HandoverThreadsPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
       <div className="space-y-6">
         {/* Header */}
-        <div className="border-4 border-old-ink bg-gradient-to-br from-old-paper to-amber-50 p-4 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
+        <div className="border-4 bg-gradient-to-br from-old-paper to-amber-50 p-4 md:p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ borderColor: 'var(--border)' }}>
           <div className="flex items-center gap-3">
             <span className="text-3xl md:text-4xl">🔄</span>
             <div>
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wider">Book Handovers</h1>
-              <p className="text-old-grey text-xs md:text-sm uppercase tracking-wider">Coordinate Book Exchanges</p>
+              <p className="text-xs md:text-sm uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>Coordinate Book Exchanges</p>
             </div>
           </div>
         </div>
 
         {/* Filter Tabs */}
-        <div className="border-4 border-old-ink bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
+        <div className="border-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
           <div className="p-4 flex flex-wrap gap-2">
             {[
               { key: 'all', label: 'All Handovers', icon: '🔄' },
@@ -90,12 +90,12 @@ export default function HandoverThreadsPage() {
         </div>
 
         {/* Threads List */}
-        <div className="border-4 border-old-ink bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
-          <div className="bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-3 md:p-4 border-b-4 border-old-ink flex items-center justify-between">
+        <div className="border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+          <div className="bg-gradient-to-r from-old-ink to-gray-800 p-3 md:p-4 border-b-4 flex items-center justify-between" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
             <h2 className="text-lg md:text-xl font-bold uppercase tracking-wider">
               {filter === 'all' ? 'All Handovers' : filter === 'sending' ? 'Books I\'m Sending' : 'Books I\'m Receiving'}
             </h2>
-            <span className="px-2 py-1 bg-old-paper text-old-ink text-xs font-bold">
+            <span className="px-2 py-1 text-xs font-bold" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}>
               {filteredThreads.length}
             </span>
           </div>
@@ -103,13 +103,13 @@ export default function HandoverThreadsPage() {
           <div className="p-4">
             {loading ? (
               <div className="text-center py-12">
-                <p className="text-old-grey uppercase tracking-wider text-sm">Loading...</p>
+                <p className="uppercase tracking-wider text-sm" style={{ color: 'var(--muted-foreground)' }}>Loading...</p>
               </div>
             ) : filteredThreads.length === 0 ? (
-              <div className="text-center py-12 border-2 border-dashed border-old-border">
+              <div className="text-center py-12 border-2 border-dashed" style={{ borderColor: 'var(--border)' }}>
                 <span className="text-5xl mb-3 block">📦</span>
-                <p className="text-old-grey text-sm uppercase tracking-wider mb-2">No handovers in progress</p>
-                <p className="text-old-grey text-xs">Handover threads are created 7 days before the due date</p>
+                <p className="text-sm uppercase tracking-wider mb-2" style={{ color: 'var(--muted-foreground)' }}>No handovers in progress</p>
+                <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>Handover threads are created 7 days before the due date</p>
               </div>
             ) : (
               <div className="space-y-3">
@@ -122,7 +122,7 @@ export default function HandoverThreadsPage() {
                   return (
                     <div
                       key={thread.id}
-                      className="border-2 border-old-border p-4 hover:border-old-ink transition-all cursor-pointer bg-gradient-to-r from-white to-gray-50"
+                      className="border-2 p-4 hover: transition-all cursor-pointer bg-gradient-to-r from-white to-gray-50" style={{ borderColor: 'var(--border)' }}
                       onClick={() => router.push(`/handover/${thread.id}`)}
                     >
                       <div className="flex flex-col md:flex-row gap-4">
@@ -133,7 +133,7 @@ export default function HandoverThreadsPage() {
                             <h3 className="font-bold uppercase text-base md:text-lg mb-1 truncate">
                               {thread.book?.title || 'Unknown Book'}
                             </h3>
-                            <p className="text-sm text-old-grey mb-2">{thread.book?.author || 'Unknown Author'}</p>
+                            <p className="text-sm mb-2" style={{ color: 'var(--muted-foreground)' }}>{thread.book?.author || 'Unknown Author'}</p>
 
                             {/* Handover Info */}
                             <div className="flex flex-wrap items-center gap-3 text-xs md:text-sm mb-2">
@@ -142,7 +142,7 @@ export default function HandoverThreadsPage() {
                                 <span className="font-bold uppercase">
                                   {isSending ? 'Sending to' : 'Receiving from'}:
                                 </span>
-                                <span className="text-old-grey">
+                                <span className="" style={{ color: 'var(--muted-foreground)' }}>
                                   {otherUser?.full_name || otherUser?.username || 'Unknown'}
                                 </span>
                               </div>
@@ -179,8 +179,7 @@ export default function HandoverThreadsPage() {
                               e.stopPropagation()
                               router.push(`/handover/${thread.id}`)
                             }}
-                            className="px-4 py-2 border-2 border-old-ink bg-white hover:bg-old-ink hover:text-old-paper 
-                                     font-bold uppercase text-xs tracking-wider transition-all"
+                            className="px-4 py-2 border-2 hover: hover: font-bold uppercase text-xs tracking-wider transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                           >
                             View Thread →
                           </button>
@@ -200,7 +199,7 @@ export default function HandoverThreadsPage() {
             <span className="text-3xl md:text-4xl">💡</span>
             <div>
               <h3 className="font-bold uppercase text-base md:text-lg mb-2">About Handovers</h3>
-              <ul className="space-y-2 text-xs md:text-sm text-old-grey">
+              <ul className="space-y-2 text-xs md:text-sm" style={{ color: 'var(--muted-foreground)' }}>
                 <li>• Handover threads are created automatically 7 days before the due date</li>
                 <li>• Use the thread to coordinate book exchange with the next reader</li>
                 <li>• Mark the book as "Completed" when you're done reading</li>

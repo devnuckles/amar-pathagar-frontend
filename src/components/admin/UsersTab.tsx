@@ -11,8 +11,8 @@ export default function UsersTab({ users, onAdjustScore, onUpdateRole }: UsersTa
     <div className="space-y-4">
       {/* Desktop Table View */}
       <div className="hidden md:block overflow-x-auto">
-        <table className="w-full border-2 border-old-border">
-          <thead className="bg-old-ink text-old-paper">
+        <table className="w-full border-2" style={{ borderColor: 'var(--border)' }}>
+          <thead className="" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)' }}>
             <tr>
               <th className="px-4 py-2 text-left uppercase text-xs">Username</th>
               <th className="px-4 py-2 text-left uppercase text-xs">Email</th>
@@ -24,9 +24,9 @@ export default function UsersTab({ users, onAdjustScore, onUpdateRole }: UsersTa
           </thead>
           <tbody>
             {userList.map((user: any) => (
-              <tr key={user.id} className="border-t-2 border-old-border hover:bg-gray-50">
+              <tr key={user.id} className="border-t-2 hover:" style={{ backgroundColor: 'var(--muted)', borderColor: 'var(--border)' }}>
                 <td className="px-4 py-3 font-bold">{user.username}</td>
-                <td className="px-4 py-3 text-sm text-old-grey">{user.email}</td>
+                <td className="px-4 py-3 text-sm" style={{ color: 'var(--muted-foreground)' }}>{user.email}</td>
                 <td className="px-4 py-3 text-center">
                   <span className={`px-2 py-1 text-xs font-bold uppercase ${
                     user.role === 'admin' ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'
@@ -40,14 +40,14 @@ export default function UsersTab({ users, onAdjustScore, onUpdateRole }: UsersTa
                   <div className="flex gap-2 justify-center">
                     <button
                       onClick={() => onAdjustScore(user.id, user.username)}
-                      className="px-2 py-1 border border-old-ink text-xs font-bold hover:bg-old-ink hover:text-old-paper transition-all"
+                      className="px-2 py-1 border text-xs font-bold hover: hover: transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                       title="Adjust score"
                     >
                       ±
                     </button>
                     <button
                       onClick={() => onUpdateRole(user.id, user.username, user.role)}
-                      className="px-2 py-1 border border-old-ink text-xs font-bold hover:bg-old-ink hover:text-old-paper transition-all"
+                      className="px-2 py-1 border text-xs font-bold hover: hover: transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                       title="Toggle role"
                     >
                       ⚡
@@ -63,11 +63,11 @@ export default function UsersTab({ users, onAdjustScore, onUpdateRole }: UsersTa
       {/* Mobile Card View */}
       <div className="md:hidden space-y-3">
         {userList.map((user: any) => (
-          <div key={user.id} className="border-2 border-old-border p-4 bg-white hover:border-old-ink transition-all">
+          <div key={user.id} className="border-2 p-4 hover: transition-all" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1 min-w-0">
                 <h3 className="font-bold text-lg truncate">{user.username}</h3>
-                <p className="text-sm text-old-grey truncate">{user.email}</p>
+                <p className="text-sm truncate" style={{ color: 'var(--muted-foreground)' }}>{user.email}</p>
               </div>
               <span className={`px-2 py-1 text-xs font-bold uppercase flex-shrink-0 ml-2 ${
                 user.role === 'admin' ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'
@@ -76,31 +76,31 @@ export default function UsersTab({ users, onAdjustScore, onUpdateRole }: UsersTa
               </span>
             </div>
 
-            <div className="grid grid-cols-3 gap-3 mb-3 pb-3 border-b-2 border-old-border">
+            <div className="grid grid-cols-3 gap-3 mb-3 pb-3 border-b-2" style={{ borderColor: 'var(--border)' }}>
               <div className="text-center">
                 <p className="text-2xl font-bold">{user.success_score}</p>
-                <p className="text-xs text-old-grey uppercase">Score</p>
+                <p className="text-xs uppercase" style={{ color: 'var(--muted-foreground)' }}>Score</p>
               </div>
               <div className="text-center">
                 <p className="text-2xl font-bold">{user.books_shared}</p>
-                <p className="text-xs text-old-grey uppercase">Shared</p>
+                <p className="text-xs uppercase" style={{ color: 'var(--muted-foreground)' }}>Shared</p>
               </div>
               <div className="text-center">
                 <p className="text-2xl font-bold">{user.books_received}</p>
-                <p className="text-xs text-old-grey uppercase">Received</p>
+                <p className="text-xs uppercase" style={{ color: 'var(--muted-foreground)' }}>Received</p>
               </div>
             </div>
 
             <div className="flex gap-2">
               <button
                 onClick={() => onAdjustScore(user.id, user.username)}
-                className="flex-1 px-4 py-2 border-2 border-old-ink text-old-ink hover:bg-old-ink hover:text-old-paper font-bold uppercase text-xs transition-all"
+                className="flex-1 px-4 py-2 border-2 hover: hover: font-bold uppercase text-xs transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
               >
                 ± Adjust Score
               </button>
               <button
                 onClick={() => onUpdateRole(user.id, user.username, user.role)}
-                className="flex-1 px-4 py-2 border-2 border-old-ink text-old-ink hover:bg-old-ink hover:text-old-paper font-bold uppercase text-xs transition-all"
+                className="flex-1 px-4 py-2 border-2 hover: hover: font-bold uppercase text-xs transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
               >
                 ⚡ Toggle Role
               </button>

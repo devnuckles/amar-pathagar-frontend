@@ -90,38 +90,38 @@ export default function MyLibraryPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
       <div className="space-y-6">
         {/* Header with Stats */}
-        <div className="border-4 border-old-ink bg-gradient-to-br from-old-paper to-amber-50 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] relative overflow-hidden">
+        <div className="border-4 bg-gradient-to-br from-old-paper to-amber-50 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] relative overflow-hidden" style={{ borderColor: 'var(--border)' }}>
           <div className="absolute top-0 right-0 text-9xl opacity-5">📚</div>
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-4xl">📖</span>
               <div>
                 <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-wider">My Library</h1>
-                <p className="text-old-grey text-sm uppercase tracking-wider">Personal Collection</p>
+                <p className="text-sm uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>Personal Collection</p>
               </div>
             </div>
 
             {/* Stats Grid */}
             <div className="grid grid-cols-3 gap-4">
-              <div className="border-2 border-old-ink bg-white p-4 text-center">
+              <div className="border-2 p-4 text-center" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
                 <p className="text-3xl md:text-4xl font-bold">{user.books_received}</p>
-                <p className="text-xs uppercase text-old-grey mt-1">Books Read</p>
+                <p className="text-xs uppercase mt-1" style={{ color: 'var(--muted-foreground)' }}>Books Read</p>
               </div>
-              <div className="border-2 border-old-ink bg-white p-4 text-center">
+              <div className="border-2 p-4 text-center" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
                 <p className="text-3xl md:text-4xl font-bold">{user.books_shared}</p>
-                <p className="text-xs uppercase text-old-grey mt-1">Books Shared</p>
+                <p className="text-xs uppercase mt-1" style={{ color: 'var(--muted-foreground)' }}>Books Shared</p>
               </div>
-              <div className="border-2 border-old-ink bg-white p-4 text-center">
+              <div className="border-2 p-4 text-center" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
                 <p className="text-3xl md:text-4xl font-bold">{bookmarks.length}</p>
-                <p className="text-xs uppercase text-old-grey mt-1">Bookmarked</p>
+                <p className="text-xs uppercase mt-1" style={{ color: 'var(--muted-foreground)' }}>Bookmarked</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Filter Tabs */}
-        <div className="border-4 border-old-ink bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
-          <div className="bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-3 border-b-4 border-old-ink">
+        <div className="border-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+          <div className="bg-gradient-to-r from-old-ink to-gray-800 p-3 border-b-4" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
             <p className="text-sm font-bold uppercase tracking-wider">Filter by Type</p>
           </div>
           <div className="p-4 flex flex-wrap gap-2">
@@ -143,7 +143,7 @@ export default function MyLibraryPage() {
                 <span>{tab.icon}</span>
                 <span>{tab.label}</span>
                 {activeTab === tab.key && (
-                  <span className="px-1.5 py-0.5 bg-old-paper text-old-ink text-xs font-bold">
+                  <span className="px-1.5 py-0.5 text-xs font-bold" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}>
                     {filteredBookmarks.length}
                   </span>
                 )}
@@ -153,43 +153,41 @@ export default function MyLibraryPage() {
         </div>
 
         {/* Bookmarks Grid */}
-        <div className="border-4 border-old-ink bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
-          <div className="bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-3 border-b-4 border-old-ink flex items-center justify-between">
+        <div className="border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+          <div className="bg-gradient-to-r from-old-ink to-gray-800 p-3 border-b-4 flex items-center justify-between" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
             <div className="flex items-center gap-2">
               <span className="text-xl">{getTypeIcon(activeTab)}</span>
               <h2 className="text-lg font-bold uppercase tracking-wider">
                 {activeTab === 'all' ? 'All Books' : activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
               </h2>
             </div>
-            <span className="px-2 py-0.5 bg-old-paper text-old-ink text-xs font-bold">
+            <span className="px-2 py-0.5 text-xs font-bold" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}>
               {filteredBookmarks.length} {filteredBookmarks.length === 1 ? 'Book' : 'Books'}
             </span>
           </div>
 
           <div className="p-4">
             {filteredBookmarks.length === 0 ? (
-              <div className="text-center py-12 border-2 border-dashed border-old-border">
+              <div className="text-center py-12 border-2 border-dashed" style={{ borderColor: 'var(--border)' }}>
                 <span className="text-5xl mb-3 block">📚</span>
-                <p className="text-old-grey text-sm uppercase tracking-wider mb-2">No books in this category</p>
-                <p className="text-old-grey text-xs mb-6">Start adding books to your library!</p>
+                <p className="text-sm uppercase tracking-wider mb-2" style={{ color: 'var(--muted-foreground)' }}>No books in this category</p>
+                <p className="text-xs mb-6" style={{ color: 'var(--muted-foreground)' }}>Start adding books to your library!</p>
                 
                 {/* Add Books Button */}
                 <button
                   onClick={() => router.push('/books')}
-                  className="inline-flex items-center justify-center w-20 h-20 border-4 border-old-ink bg-white hover:bg-old-ink 
-                           text-old-ink hover:text-old-paper transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] 
-                           hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] group"
+                  className="inline-flex items-center justify-center w-20 h-20 border-4 hover: hover: transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] group" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                   title="Browse books"
                 >
                   <span className="text-5xl font-bold group-hover:scale-110 transition-transform">+</span>
                 </button>
-                <p className="text-xs uppercase text-old-grey mt-4 font-bold">Browse Books</p>
+                <p className="text-xs uppercase mt-4 font-bold" style={{ color: 'var(--muted-foreground)' }}>Browse Books</p>
               </div>
             ) : (
               // Table View for All Categories
               <div className="overflow-x-auto">
                 {/* Table Header - Desktop */}
-                <div className="hidden md:grid md:grid-cols-12 gap-3 pb-2 mb-3 border-b-2 border-old-border text-xs uppercase tracking-wider text-old-grey font-bold">
+                <div className="hidden md:grid md:grid-cols-12 gap-3 pb-2 mb-3 border-b-2 text-xs uppercase tracking-wider font-bold" style={{ color: 'var(--muted-foreground)', borderColor: 'var(--border)' }}>
                   <div className="col-span-1">Type</div>
                   <div className="col-span-4">Book Title</div>
                   <div className="col-span-3">Author</div>
@@ -202,7 +200,7 @@ export default function MyLibraryPage() {
                   {filteredBookmarks.map((bookmark: any) => (
                     <div 
                       key={bookmark.id} 
-                      className="grid grid-cols-1 md:grid-cols-12 gap-3 p-3 border-2 border-old-border hover:border-old-ink transition-all bg-gradient-to-r from-white to-gray-50 items-center cursor-pointer"
+                      className="grid grid-cols-1 md:grid-cols-12 gap-3 p-3 border-2 hover: transition-all bg-gradient-to-r from-white to-gray-50 items-center cursor-pointer" style={{ borderColor: 'var(--border)' }}
                       onClick={() => router.push(`/books/${bookmark.book_id}`)}
                     >
                       {/* Type Icon */}
@@ -215,21 +213,21 @@ export default function MyLibraryPage() {
                         <h3 className="font-bold uppercase text-sm truncate">
                           {bookmark.book?.title || 'Unknown Book'}
                         </h3>
-                        <span className="text-xs uppercase text-old-grey md:hidden">
+                        <span className="text-xs uppercase md:hidden" style={{ color: 'var(--muted-foreground)' }}>
                           {bookmark.book?.author || 'Unknown Author'}
                         </span>
                       </div>
 
                       {/* Author - Desktop */}
                       <div className="md:col-span-3 hidden md:block">
-                        <p className="text-sm text-old-grey truncate">
+                        <p className="text-sm truncate" style={{ color: 'var(--muted-foreground)' }}>
                           {bookmark.book?.author || 'Unknown Author'}
                         </p>
                       </div>
 
                       {/* Category - Desktop */}
                       <div className="md:col-span-2 hidden md:block">
-                        <span className="text-xs text-old-grey truncate block">
+                        <span className="text-xs truncate block" style={{ color: 'var(--muted-foreground)' }}>
                           {bookmark.book?.category || 'General'}
                         </span>
                       </div>
@@ -241,8 +239,7 @@ export default function MyLibraryPage() {
                             e.stopPropagation()
                             router.push(`/books/${bookmark.book_id}`)
                           }}
-                          className="px-3 py-1 border-2 border-old-ink bg-white hover:bg-old-ink hover:text-old-paper 
-                                   font-bold uppercase text-xs tracking-wider transition-all"
+                          className="px-3 py-1 border-2 hover: hover: font-bold uppercase text-xs tracking-wider transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                           title="View book details"
                         >
                           View
@@ -261,7 +258,7 @@ export default function MyLibraryPage() {
                       </div>
 
                       {/* Mobile Info */}
-                      <div className="md:hidden text-xs text-old-grey flex items-center gap-3">
+                      <div className="md:hidden text-xs flex items-center gap-3" style={{ color: 'var(--muted-foreground)' }}>
                         <span className="uppercase font-bold">{bookmark.bookmark_type}</span>
                         <span>•</span>
                         <span>{bookmark.book?.category || 'General'}</span>

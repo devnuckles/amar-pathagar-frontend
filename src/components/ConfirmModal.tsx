@@ -37,23 +37,53 @@ export default function ConfirmModal({
       />
 
       {/* Modal */}
-      <div className="relative z-10 w-full max-w-md border-4 border-old-ink bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)]">
+      <div 
+        className="relative z-10 w-full max-w-md border-4 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)]"
+        style={{
+          borderColor: 'var(--border)',
+          backgroundColor: 'var(--card)'
+        }}
+      >
         {/* Header */}
-        <div className="bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-4 border-b-4 border-old-ink">
+        <div 
+          className="p-4 border-b-4"
+          style={{
+            background: 'linear-gradient(to right, var(--primary), var(--secondary))',
+            color: 'var(--primary-foreground)',
+            borderColor: 'var(--border)'
+          }}
+        >
           <h3 className="text-xl font-bold uppercase tracking-wider">{title}</h3>
         </div>
 
         {/* Content */}
         <div className="p-6">
-          <p className="text-old-grey leading-relaxed">{message}</p>
+          <p className="leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>{message}</p>
         </div>
 
         {/* Actions */}
-        <div className="p-4 border-t-2 border-old-border bg-gray-50 flex gap-3 justify-end">
+        <div 
+          className="p-4 border-t-2 flex gap-3 justify-end"
+          style={{
+            borderColor: 'var(--border)',
+            backgroundColor: 'var(--muted)'
+          }}
+        >
           <button
             onClick={onClose}
-            className="px-6 py-2 border-2 border-old-border text-old-grey hover:border-old-ink hover:text-old-ink 
-                     font-bold uppercase text-sm tracking-wider transition-all"
+            className="px-6 py-2 border-2 font-bold uppercase text-sm tracking-wider transition-all"
+            style={{
+              borderColor: 'var(--border)',
+              color: 'var(--muted-foreground)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = 'var(--foreground)';
+              e.currentTarget.style.color = 'var(--foreground)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = 'var(--border)';
+              e.currentTarget.style.color = 'var(--muted-foreground)';
+            }}
           >
             {cancelText}
           </button>

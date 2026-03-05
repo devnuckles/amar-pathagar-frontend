@@ -27,14 +27,14 @@ export function ToastItem({ toast, onClose }: ToastProps) {
   const getToastStyles = () => {
     switch (toast.type) {
       case 'success':
-        return 'border-green-700 bg-green-50 text-green-900'
+        return { borderColor: '#16a34a', backgroundColor: '#f0fdf4', color: '#14532d' }
       case 'error':
-        return 'border-red-700 bg-red-50 text-red-900'
+        return { borderColor: '#b91c1c', backgroundColor: '#fef2f2', color: '#7f1d1d' }
       case 'warning':
-        return 'border-yellow-700 bg-yellow-50 text-yellow-900'
+        return { borderColor: '#ca8a04', backgroundColor: '#fefce8', color: '#713f12' }
       case 'info':
       default:
-        return 'border-old-ink bg-white text-old-ink'
+        return { borderColor: 'var(--border)', backgroundColor: 'var(--card)', color: 'var(--foreground)' }
     }
   }
 
@@ -54,12 +54,8 @@ export function ToastItem({ toast, onClose }: ToastProps) {
 
   return (
     <div
-      className={`
-        ${getToastStyles()}
-        border-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]
-        p-4 mb-3 min-w-[300px] max-w-md
-        animate-slide-in
-      `}
+      className="border-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] p-4 mb-3 min-w-[300px] max-w-md animate-slide-in"
+      style={getToastStyles()}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-start gap-3 flex-1">

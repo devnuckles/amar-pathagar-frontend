@@ -34,7 +34,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: 'var(--background)' }}>
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
@@ -43,10 +43,10 @@ export default function RegisterPage() {
             className="inline-block hover:opacity-80 transition-opacity"
           >
             <div className="text-6xl mb-4">📚</div>
-            <h1 className="text-4xl font-bold uppercase tracking-wider mb-2">
+            <h1 className="text-4xl font-bold uppercase tracking-wider mb-2" style={{ color: 'var(--foreground)' }}>
               Amar Pathagar
             </h1>
-            <p className="text-old-grey uppercase text-sm tracking-widest">
+            <p className="uppercase text-sm tracking-widest" style={{ color: 'var(--muted-foreground)' }}>
               Join Our Community
             </p>
           </Link>
@@ -64,7 +64,7 @@ export default function RegisterPage() {
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-bold uppercase tracking-wider mb-2">
+              <label className="block text-sm font-bold uppercase tracking-wider mb-2" style={{ color: 'var(--foreground)' }}>
                 Full Name
               </label>
               <input
@@ -79,7 +79,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-bold uppercase tracking-wider mb-2">
+              <label className="block text-sm font-bold uppercase tracking-wider mb-2" style={{ color: 'var(--foreground)' }}>
                 Username
               </label>
               <input
@@ -94,7 +94,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-bold uppercase tracking-wider mb-2">
+              <label className="block text-sm font-bold uppercase tracking-wider mb-2" style={{ color: 'var(--foreground)' }}>
                 Email
               </label>
               <input
@@ -109,7 +109,7 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-bold uppercase tracking-wider mb-2">
+              <label className="block text-sm font-bold uppercase tracking-wider mb-2" style={{ color: 'var(--foreground)' }}>
                 Password
               </label>
               <div className="relative">
@@ -126,7 +126,10 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-old-grey hover:text-old-ink transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 transition-colors"
+                  style={{ color: 'var(--muted-foreground)' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = 'var(--foreground)'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted-foreground)'}
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? (
@@ -148,16 +151,17 @@ export default function RegisterPage() {
           </form>
 
           <div className="mt-6 text-center space-y-3">
-            <p className="text-old-grey text-sm">
+            <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>
               Already have an account?{" "}
-              <Link href="/login" className="text-old-ink font-bold underline">
+              <Link href="/login" className="font-bold underline" style={{ color: 'var(--foreground)' }}>
                 Login here
               </Link>
             </p>
-            <p className="text-old-grey text-sm">
+            <p className="text-sm" style={{ color: 'var(--muted-foreground)' }}>
               <Link
                 href="/"
-                className="text-old-ink font-bold uppercase tracking-wider hover:underline inline-flex items-center gap-1 justify-center"
+                className="font-bold uppercase tracking-wider hover:underline inline-flex items-center gap-1 justify-center"
+                style={{ color: 'var(--foreground)' }}
               >
                 ← Back to Home
               </Link>
@@ -166,11 +170,17 @@ export default function RegisterPage() {
         </div>
 
         {/* Starting Score Info */}
-        <div className="mt-6 p-4 border-2 border-old-ink bg-white">
-          <p className="text-sm font-bold uppercase tracking-wider text-center mb-2">
+        <div 
+          className="mt-6 p-4 border-2"
+          style={{
+            borderColor: 'var(--border)',
+            backgroundColor: 'var(--card)'
+          }}
+        >
+          <p className="text-sm font-bold uppercase tracking-wider text-center mb-2" style={{ color: 'var(--foreground)' }}>
             Starting Success Score: 100
           </p>
-          <p className="text-xs text-old-grey text-center">
+          <p className="text-xs text-center" style={{ color: 'var(--muted-foreground)' }}>
             Build your reputation through contributions
           </p>
         </div>

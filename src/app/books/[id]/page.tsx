@@ -222,13 +222,13 @@ export default function BookDetailPage() {
         {/* Back Button */}
         <button
           onClick={() => router.push('/books')}
-          className="flex items-center gap-2 px-4 py-2 border-2 border-old-ink hover:bg-old-ink hover:text-old-paper transition-all text-sm font-bold uppercase"
+          className="flex items-center gap-2 px-4 py-2 border-2 hover: hover: transition-all text-sm font-bold uppercase" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
         >
           ← Back to Collection
         </button>
 
         {/* Book Card - Retro Library Card Style */}
-        <div className="border-4 border-old-ink bg-gradient-to-br from-old-paper to-amber-50 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] relative overflow-hidden">
+        <div className="border-4 bg-gradient-to-br from-old-paper to-amber-50 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] relative overflow-hidden" style={{ borderColor: 'var(--border)' }}>
           {/* Decorative Corner */}
           <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
             <div className="text-9xl">📚</div>
@@ -238,7 +238,7 @@ export default function BookDetailPage() {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
               {/* Book Cover - Compact */}
               <div className="md:col-span-3">
-                <div className="border-4 border-old-ink shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] bg-white relative">
+                <div className="border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] relative" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
                   <div className="aspect-[3/4] bg-old-border flex items-center justify-center">
                     {book.cover_url ? (
                       <img src={book.cover_url} alt={book.title} className="w-full h-full object-cover" />
@@ -256,51 +256,51 @@ export default function BookDetailPage() {
               {/* Book Information - Library Card Style */}
               <div className="md:col-span-9 space-y-4">
                 {/* Title Section */}
-                <div className="border-b-4 border-old-ink pb-4">
+                <div className="border-b-4 pb-4" style={{ borderColor: 'var(--border)' }}>
                   <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-wider mb-2 leading-tight">
                     {book.title}
                   </h1>
-                  <p className="text-lg md:text-xl text-old-grey uppercase tracking-wider">
+                  <p className="text-lg md:text-xl uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>
                     by {book.author}
                   </p>
                 </div>
 
                 {/* Metadata Grid - Retro Style */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className="border-2 border-old-ink p-3 bg-white">
-                    <p className="text-xs uppercase text-old-grey mb-1">Total Reads</p>
+                  <div className="border-2 p-3" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+                    <p className="text-xs uppercase mb-1" style={{ color: 'var(--muted-foreground)' }}>Total Reads</p>
                     <p className="text-2xl font-bold">{book.total_reads}</p>
                   </div>
-                  <div className="border-2 border-old-ink p-3 bg-white">
-                    <p className="text-xs uppercase text-old-grey mb-1">Rating</p>
+                  <div className="border-2 p-3" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+                    <p className="text-xs uppercase mb-1" style={{ color: 'var(--muted-foreground)' }}>Rating</p>
                     <p className="text-2xl font-bold">
                       {book.average_rating > 0 ? `★ ${book.average_rating.toFixed(1)}` : 'N/A'}
                     </p>
                   </div>
-                  <div className="border-2 border-old-ink p-3 bg-white">
-                    <p className="text-xs uppercase text-old-grey mb-1">Category</p>
+                  <div className="border-2 p-3" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+                    <p className="text-xs uppercase mb-1" style={{ color: 'var(--muted-foreground)' }}>Category</p>
                     <p className="text-sm font-bold uppercase truncate">{book.category || 'General'}</p>
                   </div>
-                  <div className="border-2 border-old-ink p-3 bg-white">
-                    <p className="text-xs uppercase text-old-grey mb-1">Reading Period</p>
+                  <div className="border-2 p-3" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+                    <p className="text-xs uppercase mb-1" style={{ color: 'var(--muted-foreground)' }}>Reading Period</p>
                     <p className="text-2xl font-bold">{book.max_reading_days || 14}</p>
-                    <p className="text-xs text-old-grey">days</p>
+                    <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>days</p>
                   </div>
                 </div>
 
                 {/* ISBN Row */}
                 {book.isbn && (
-                  <div className="border-2 border-old-ink p-3 bg-white">
-                    <p className="text-xs uppercase text-old-grey mb-1 font-bold">ISBN</p>
+                  <div className="border-2 p-3" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+                    <p className="text-xs uppercase mb-1 font-bold" style={{ color: 'var(--muted-foreground)' }}>ISBN</p>
                     <p className="text-sm font-bold">{book.isbn}</p>
                   </div>
                 )}
 
                 {/* Description */}
                 {book.description && (
-                  <div className="border-2 border-old-ink p-4 bg-white">
-                    <p className="text-xs uppercase text-old-grey mb-2 font-bold">Description</p>
-                    <p className="text-sm text-old-grey leading-relaxed">{book.description}</p>
+                  <div className="border-2 p-4" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+                    <p className="text-xs uppercase mb-2 font-bold" style={{ color: 'var(--muted-foreground)' }}>Description</p>
+                    <p className="text-sm leading-relaxed" style={{ color: 'var(--muted-foreground)' }}>{book.description}</p>
                   </div>
                 )}
 
@@ -308,7 +308,7 @@ export default function BookDetailPage() {
                 {book.tags && book.tags.length > 0 && (
                   <div className="flex flex-wrap gap-2">
                     {book.tags.map((tag: string) => (
-                      <span key={tag} className="px-3 py-1 border-2 border-old-ink text-xs uppercase font-bold bg-white">
+                      <span key={tag} className="px-3 py-1 border-2 text-xs uppercase font-bold" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
                         {tag}
                       </span>
                     ))}
@@ -335,8 +335,7 @@ export default function BookDetailPage() {
                   ) : book.status === 'available' || book.status === 'on_hold' ? (
                     <button 
                       onClick={handleRequest} 
-                      className="flex-1 px-6 py-3 border-2 border-old-ink bg-old-ink text-old-paper font-bold uppercase text-sm
-                               hover:bg-white hover:text-old-ink transition-all"
+                      className="flex-1 px-6 py-3 border-2 font-bold uppercase text-sm hover: hover: transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                     >
                       Request This Book
                     </button>
@@ -353,8 +352,8 @@ export default function BookDetailPage() {
 
                 {/* Current Holder */}
                 {book.current_holder && (
-                  <div className="border-2 border-old-ink p-3 bg-white">
-                    <p className="text-xs uppercase text-old-grey mb-1 font-bold">Currently With</p>
+                  <div className="border-2 p-3" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+                    <p className="text-xs uppercase mb-1 font-bold" style={{ color: 'var(--muted-foreground)' }}>Currently With</p>
                     <p className="text-sm font-bold">{book.current_holder.full_name || book.current_holder.username}</p>
                   </div>
                 )}
@@ -365,7 +364,7 @@ export default function BookDetailPage() {
 
         {/* Handover Status Section - Only show if book is reading or requested */}
         {(readingStatus || handoverThread) && book.status !== 'available' && (
-          <div className="border-4 border-blue-600 bg-white shadow-[6px_6px_0px_0px_rgba(37,99,235,0.3)]">
+          <div className="border-4 border-blue-600 shadow-[6px_6px_0px_0px_rgba(37,99,235,0.3)]" style={{ backgroundColor: 'var(--card)' }}>
             <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-4 border-b-4 border-blue-600 flex items-center gap-2">
               <span className="text-xl">🔄</span>
               <h2 className="text-xl font-bold uppercase tracking-wider">Book Handover Status</h2>
@@ -384,7 +383,7 @@ export default function BookDetailPage() {
                       <div className="space-y-2 text-sm">
                         {readingStatus.due_date && (
                           <div className="flex items-center gap-2">
-                            <span className="text-old-grey">Due Date:</span>
+                            <span className="" style={{ color: 'var(--muted-foreground)' }}>Due Date:</span>
                             <span className="font-bold">
                               {new Date(readingStatus.due_date).toLocaleDateString('en-US', {
                                 month: 'long',
@@ -400,7 +399,7 @@ export default function BookDetailPage() {
                           </div>
                         )}
                         <div className="flex items-center gap-2">
-                          <span className="text-old-grey">Status:</span>
+                          <span className="" style={{ color: 'var(--muted-foreground)' }}>Status:</span>
                           <span className={`px-2 py-0.5 text-xs font-bold uppercase ${
                             readingStatus.is_completed 
                               ? 'bg-green-600 text-white' 
@@ -411,7 +410,7 @@ export default function BookDetailPage() {
                         </div>
                         {readingStatus.delivery_status && (
                           <div className="flex items-center gap-2">
-                            <span className="text-old-grey">Delivery:</span>
+                            <span className="" style={{ color: 'var(--muted-foreground)' }}>Delivery:</span>
                             <span className={`px-2 py-0.5 text-xs font-bold uppercase ${
                               readingStatus.delivery_status === 'delivered' 
                                 ? 'bg-green-600 text-white'
@@ -425,7 +424,7 @@ export default function BookDetailPage() {
                         )}
                         {readingStatus.next_reader && (
                           <div className="flex items-center gap-2">
-                            <span className="text-old-grey">Next Reader:</span>
+                            <span className="" style={{ color: 'var(--muted-foreground)' }}>Next Reader:</span>
                             <span className="font-bold">
                               {readingStatus.next_reader.full_name || readingStatus.next_reader.username}
                             </span>
@@ -465,13 +464,13 @@ export default function BookDetailPage() {
                   </h3>
                   <div className="space-y-2 text-sm mb-4">
                     <div className="flex items-center gap-2">
-                      <span className="text-old-grey">Current Holder:</span>
+                      <span className="" style={{ color: 'var(--muted-foreground)' }}>Current Holder:</span>
                       <span className="font-bold">
                         {handoverThread.current_holder?.full_name || handoverThread.current_holder?.username || 'Book Owner'}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-old-grey">Delivery Status:</span>
+                      <span className="" style={{ color: 'var(--muted-foreground)' }}>Delivery Status:</span>
                       <span className={`px-2 py-0.5 text-xs font-bold uppercase ${
                         handoverThread.delivery_status === 'in_transit'
                           ? 'bg-orange-600 text-white'
@@ -501,19 +500,19 @@ export default function BookDetailPage() {
                   </h3>
                   <div className="space-y-2 text-sm mb-4">
                     <div className="flex items-center gap-2">
-                      <span className="text-old-grey">Sending To:</span>
+                      <span className="" style={{ color: 'var(--muted-foreground)' }}>Sending To:</span>
                       <span className="font-bold">
                         {handoverThread.next_holder?.full_name || handoverThread.next_holder?.username || 'Reader'}
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-old-grey">Status:</span>
+                      <span className="" style={{ color: 'var(--muted-foreground)' }}>Status:</span>
                       <span className="px-2 py-0.5 text-xs font-bold uppercase bg-orange-600 text-white">
                         Waiting for delivery confirmation
                       </span>
                     </div>
                   </div>
-                  <p className="text-xs text-old-grey">
+                  <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
                     Please coordinate with the reader via the handover thread to arrange delivery.
                   </p>
                 </div>
@@ -521,21 +520,20 @@ export default function BookDetailPage() {
 
               {/* Handover Thread Link */}
               {handoverThread && handoverThread.id && (
-                <div className="border-2 border-old-ink bg-old-paper p-4">
+                <div className="border-2 p-4" style={{ backgroundColor: 'var(--background)', borderColor: 'var(--border)' }}>
                   <div className="flex items-center justify-between gap-4">
                     <div>
                       <h3 className="font-bold uppercase text-sm mb-1 flex items-center gap-2">
                         <span className="text-xl">💬</span>
                         Handover Coordination Thread
                       </h3>
-                      <p className="text-xs text-old-grey">
+                      <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
                         Coordinate the book handover with the other party
                       </p>
                     </div>
                     <button
                       onClick={() => router.push(`/handover/${handoverThread.id}`)}
-                      className="px-4 py-2 border-2 border-old-ink bg-old-ink text-old-paper 
-                               hover:bg-white hover:text-old-ink font-bold uppercase text-xs tracking-wider transition-all"
+                      className="px-4 py-2 border-2 hover: hover: font-bold uppercase text-xs tracking-wider transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                     >
                       Open Thread →
                     </button>
@@ -548,7 +546,7 @@ export default function BookDetailPage() {
 
         {/* Book Reviews Section */}
         {reviews.length > 0 && (
-          <div className="border-4 border-purple-600 bg-white shadow-[6px_6px_0px_0px_rgba(147,51,234,0.3)]">
+          <div className="border-4 border-purple-600 shadow-[6px_6px_0px_0px_rgba(147,51,234,0.3)]" style={{ backgroundColor: 'var(--card)' }}>
             <button
               onClick={() => setIsReviewsExpanded(!isReviewsExpanded)}
               className="w-full bg-gradient-to-r from-purple-600 to-purple-800 text-white p-3 border-b-4 border-purple-600 flex items-center justify-between hover:from-purple-700 hover:to-purple-900 transition-all"
@@ -556,7 +554,7 @@ export default function BookDetailPage() {
               <div className="flex items-center gap-2">
                 <span className="text-lg">⭐</span>
                 <h2 className="text-lg font-bold uppercase tracking-wider">Reader Reviews</h2>
-                <span className="px-2 py-0.5 bg-white text-purple-600 text-xs font-bold">
+                <span className="px-2 py-0.5 text-purple-600 text-xs font-bold" style={{ backgroundColor: 'var(--card)' }}>
                   {reviews.length}
                 </span>
               </div>
@@ -589,7 +587,7 @@ export default function BookDetailPage() {
                             <p className="font-bold text-xs">
                               {review.reviewer?.full_name || review.reviewer?.username || 'Anonymous'}
                             </p>
-                            <p className="text-xs text-old-grey">
+                            <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
                               {new Date(review.created_at).toLocaleDateString('en-US', {
                                 month: 'short',
                                 day: 'numeric',
@@ -611,25 +609,25 @@ export default function BookDetailPage() {
                       {/* Compact Rating Pills */}
                       <div className="flex gap-2 mb-2 flex-wrap">
                         {review.behavior_rating && (
-                          <span className="px-2 py-1 bg-white border border-purple-200 text-xs">
-                            <span className="text-old-grey">Behavior:</span> <span className="font-bold text-purple-600">{review.behavior_rating}/5</span>
+                          <span className="px-2 py-1 border border-purple-200 text-xs" style={{ backgroundColor: 'var(--card)' }}>
+                            <span className="" style={{ color: 'var(--muted-foreground)' }}>Behavior:</span> <span className="font-bold text-purple-600">{review.behavior_rating}/5</span>
                           </span>
                         )}
                         {review.book_condition_rating && (
-                          <span className="px-2 py-1 bg-white border border-purple-200 text-xs">
-                            <span className="text-old-grey">Condition:</span> <span className="font-bold text-purple-600">{review.book_condition_rating}/5</span>
+                          <span className="px-2 py-1 border border-purple-200 text-xs" style={{ backgroundColor: 'var(--card)' }}>
+                            <span className="" style={{ color: 'var(--muted-foreground)' }}>Condition:</span> <span className="font-bold text-purple-600">{review.book_condition_rating}/5</span>
                           </span>
                         )}
                         {review.communication_rating && (
-                          <span className="px-2 py-1 bg-white border border-purple-200 text-xs">
-                            <span className="text-old-grey">Communication:</span> <span className="font-bold text-purple-600">{review.communication_rating}/5</span>
+                          <span className="px-2 py-1 border border-purple-200 text-xs" style={{ backgroundColor: 'var(--card)' }}>
+                            <span className="" style={{ color: 'var(--muted-foreground)' }}>Communication:</span> <span className="font-bold text-purple-600">{review.communication_rating}/5</span>
                           </span>
                         )}
                       </div>
 
                       {/* Compact Comment */}
                       {review.comment && (
-                        <p className="text-xs text-old-grey leading-relaxed line-clamp-2">
+                        <p className="text-xs leading-relaxed line-clamp-2" style={{ color: 'var(--muted-foreground)' }}>
                           "{review.comment}"
                         </p>
                       )}
@@ -652,15 +650,15 @@ export default function BookDetailPage() {
         )}
 
         {/* Reading Ideas Section - Thread View */}
-        <div className="border-4 border-old-ink bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
+        <div className="border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
           <button
             onClick={() => setIsDiscussionExpanded(!isDiscussionExpanded)}
-            className="w-full bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-4 border-b-4 border-old-ink flex items-center justify-between hover:from-gray-800 hover:to-black transition-all"
+            className="w-full bg-gradient-to-r from-old-ink to-gray-800 p-4 border-b-4 flex items-center justify-between hover:from-gray-800 hover:to-black transition-all" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
           >
             <div className="flex items-center gap-2">
               <span className="text-xl">💬</span>
               <h2 className="text-xl font-bold uppercase tracking-wider">Discussion Thread</h2>
-              <span className="px-2 py-0.5 bg-old-paper text-old-ink text-xs font-bold">
+              <span className="px-2 py-0.5 text-xs font-bold" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}>
                 {ideas.length} {ideas.length === 1 ? 'Post' : 'Posts'}
               </span>
             </div>
@@ -674,37 +672,36 @@ export default function BookDetailPage() {
               <div className="mb-4">
                 <button
                   onClick={() => setShowIdeaForm(!showIdeaForm)}
-                  className="w-full px-4 py-2 border-2 border-old-ink text-old-ink font-bold uppercase text-xs
-                           hover:bg-old-ink hover:text-old-paper transition-all"
+                  className="w-full px-4 py-2 border-2 font-bold uppercase text-xs hover: hover: transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                 >
                   {showIdeaForm ? 'Cancel' : '+ New Post'}
                 </button>
               </div>
 
               {showIdeaForm && (
-                <div className="mb-6 border-2 border-old-ink bg-old-paper p-4">
-                  <div className="flex items-center gap-2 mb-3 pb-3 border-b-2 border-old-border">
+                <div className="mb-6 border-2 p-4" style={{ backgroundColor: 'var(--background)', borderColor: 'var(--border)' }}>
+                  <div className="flex items-center gap-2 mb-3 pb-3 border-b-2" style={{ borderColor: 'var(--border)' }}>
                     <span className="text-2xl">✍️</span>
                     <p className="font-bold uppercase text-sm">New Discussion Post</p>
                   </div>
                 <form onSubmit={handleSubmitIdea} className="space-y-3">
                   <div>
-                    <label className="block text-xs font-bold uppercase mb-1 text-old-grey">Subject</label>
+                    <label className="block text-xs font-bold uppercase mb-1" style={{ color: 'var(--muted-foreground)' }}>Subject</label>
                     <input
                       type="text"
                       value={ideaForm.title}
                       onChange={(e) => setIdeaForm({ ...ideaForm, title: e.target.value })}
-                      className="w-full px-3 py-2 border-2 border-old-border focus:border-old-ink outline-none text-sm"
+                      className="w-full px-3 py-2 border-2 focus: outline-none text-sm" style={{ borderColor: 'var(--border)' }}
                       placeholder="Enter discussion topic..."
                       required
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-bold uppercase mb-1 text-old-grey">Message</label>
+                    <label className="block text-xs font-bold uppercase mb-1" style={{ color: 'var(--muted-foreground)' }}>Message</label>
                     <textarea
                       value={ideaForm.content}
                       onChange={(e) => setIdeaForm({ ...ideaForm, content: e.target.value })}
-                      className="w-full px-3 py-2 border-2 border-old-border focus:border-old-ink outline-none text-sm"
+                      className="w-full px-3 py-2 border-2 focus: outline-none text-sm" style={{ borderColor: 'var(--border)' }}
                       rows={4}
                       placeholder="Share your thoughts about this book..."
                       required
@@ -712,8 +709,7 @@ export default function BookDetailPage() {
                   </div>
                   <button 
                     type="submit" 
-                    className="px-6 py-2 border-2 border-old-ink bg-old-ink text-old-paper font-bold uppercase text-xs
-                             hover:bg-white hover:text-old-ink transition-all"
+                    className="px-6 py-2 border-2 font-bold uppercase text-xs hover: hover: transition-all" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                   >
                     Post Message (+3 Points)
                   </button>
@@ -722,10 +718,10 @@ export default function BookDetailPage() {
             )}
 
             {ideas.length === 0 ? (
-              <div className="text-center py-12 border-2 border-dashed border-old-border">
+              <div className="text-center py-12 border-2 border-dashed" style={{ borderColor: 'var(--border)' }}>
                 <span className="text-5xl mb-3 block">💭</span>
-                <p className="text-old-grey text-sm uppercase tracking-wider">No posts yet</p>
-                <p className="text-old-grey text-xs mt-1">Be the first to start the discussion!</p>
+                <p className="text-sm uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>No posts yet</p>
+                <p className="text-xs mt-1" style={{ color: 'var(--muted-foreground)' }}>Be the first to start the discussion!</p>
               </div>
             ) : (
               <div className="space-y-0">
@@ -737,11 +733,11 @@ export default function BookDetailPage() {
                     }`}
                   >
                     {/* Thread Header */}
-                    <div className="bg-gradient-to-r from-gray-50 to-white p-3 border-b border-old-border">
+                    <div className="bg-gradient-to-r from-gray-50 to-white p-3 border-b" style={{ borderColor: 'var(--border)' }}>
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex items-start gap-3 flex-1">
                           {/* Avatar */}
-                          <div className="w-10 h-10 border-2 border-old-ink bg-old-paper flex items-center justify-center flex-shrink-0">
+                          <div className="w-10 h-10 border-2 flex items-center justify-center flex-shrink-0" style={{ backgroundColor: 'var(--background)', borderColor: 'var(--border)' }}>
                             <span className="text-lg">👤</span>
                           </div>
                           
@@ -750,7 +746,7 @@ export default function BookDetailPage() {
                             <h3 className="font-bold uppercase text-sm mb-1 leading-tight">
                               {idea.title}
                             </h3>
-                            <div className="flex items-center gap-2 text-xs text-old-grey">
+                            <div className="flex items-center gap-2 text-xs" style={{ color: 'var(--muted-foreground)' }}>
                               <span className="font-bold">
                                 {idea.user?.username || 'Anonymous'}
                               </span>
@@ -774,14 +770,14 @@ export default function BookDetailPage() {
                         <div className="flex gap-1 flex-shrink-0">
                           <button
                             onClick={() => handleVote(idea.id, 'upvote')}
-                            className="px-2 py-1 border border-old-border hover:bg-green-50 hover:border-green-600 transition-all text-xs"
+                            className="px-2 py-1 border hover:bg-green-50 hover:border-green-600 transition-all text-xs" style={{ borderColor: 'var(--border)' }}
                             title="Upvote"
                           >
                             👍 {idea.upvotes}
                           </button>
                           <button
                             onClick={() => handleVote(idea.id, 'downvote')}
-                            className="px-2 py-1 border border-old-border hover:bg-red-50 hover:border-red-600 transition-all text-xs"
+                            className="px-2 py-1 border hover:bg-red-50 hover:border-red-600 transition-all text-xs" style={{ borderColor: 'var(--border)' }}
                             title="Downvote"
                           >
                             👎 {idea.downvotes}
@@ -792,13 +788,13 @@ export default function BookDetailPage() {
 
                     {/* Thread Content */}
                     <div className="p-4">
-                      <p className="text-sm text-old-grey leading-relaxed whitespace-pre-wrap">
+                      <p className="text-sm leading-relaxed whitespace-pre-wrap" style={{ color: 'var(--muted-foreground)' }}>
                         {idea.content}
                       </p>
                     </div>
 
                     {/* Thread Footer */}
-                    <div className="px-4 py-2 bg-gray-50 border-t border-old-border flex items-center justify-between text-xs text-old-grey">
+                    <div className="px-4 py-2 border-t flex items-center justify-between text-xs" style={{ backgroundColor: 'var(--muted)', color: 'var(--muted-foreground)', borderColor: 'var(--border)' }}>
                       <div className="flex items-center gap-3">
                         <span className="flex items-center gap-1">
                           <span>💬</span>

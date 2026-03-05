@@ -39,24 +39,35 @@ export default function Modal({
   const getTypeStyles = () => {
     switch (type) {
       case 'danger':
-        return 'border-red-700'
+        return { borderColor: '#b91c1c' }
       case 'warning':
-        return 'border-yellow-700'
+        return { borderColor: '#ca8a04' }
       case 'info':
       default:
-        return 'border-old-ink'
+        return { borderColor: 'var(--border)' }
     }
   }
 
   const getConfirmButtonStyles = () => {
     switch (type) {
       case 'danger':
-        return 'bg-red-700 text-white border-red-700 hover:bg-red-800'
+        return { backgroundColor: '#b91c1c', color: '#ffffff', borderColor: '#b91c1c' }
       case 'warning':
-        return 'bg-yellow-700 text-white border-yellow-700 hover:bg-yellow-800'
+        return { backgroundColor: '#ca8a04', color: '#ffffff', borderColor: '#ca8a04' }
       case 'info':
       default:
-        return 'bg-old-ink text-old-paper border-old-ink hover:bg-old-paper hover:text-old-ink'
+        return { backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--primary)' }
+    }
+  }
+
+  const getTopBorderColor = () => {
+    switch (type) {
+      case 'danger':
+        return '#b91c1c'
+      case 'warning':
+        return '#ca8a04'
+      default:
+        return 'var(--primary)'
     }
   }
 
@@ -69,19 +80,34 @@ export default function Modal({
       />
       
       {/* Modal */}
-      <div className={`relative bg-white border-4 ${getTypeStyles()} shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] max-w-md w-full animate-slide-up`}>
+      <div 
+        className="relative border-4 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] max-w-md w-full animate-slide-up"
+        style={{
+          backgroundColor: 'var(--card)',
+          ...getTypeStyles()
+        }}
+      >
         {/* Decorative top border */}
-        <div className={`h-2 ${type === 'danger' ? 'bg-red-700' : type === 'warning' ? 'bg-yellow-700' : 'bg-old-ink'}`} />
+        <div className="h-2" style={{ backgroundColor: getTopBorderColor() }} />
         
         {/* Content */}
         <div className="p-6">
           {/* Title */}
-          <h2 className="text-2xl font-bold uppercase tracking-wider mb-4 border-b-2 border-old-border pb-2">
+          <h2 
+            className="text-2xl font-bold uppercase tracking-wider mb-4 border-b-2 pb-2"
+            style={{
+              color: 'var(--foreground)',
+              borderColor: 'var(--border)'
+            }}
+          >
             {title}
           </h2>
           
           {/* Message */}
-          <p className="text-old-grey leading-relaxed mb-6 font-serif">
+          <p 
+            className="leading-relaxed mb-6 font-serif"
+            style={{ color: 'var(--muted-foreground)' }}
+          >
             {message}
           </p>
           
@@ -89,13 +115,40 @@ export default function Modal({
           <div className="flex flex-col sm:flex-row gap-3">
             <button
               onClick={onConfirm}
-              className={`flex-1 px-6 py-3 font-bold uppercase tracking-widest text-sm border-2 transition-all duration-200 shadow-md hover:shadow-lg ${getConfirmButtonStyles()}`}
+              className="flex-1 px-6 py-3 font-bold uppercase tracking-widest text-sm border-2 transition-all duration-200 shadow-md hover:shadow-lg"
+              style={getConfirmButtonStyles()}
+              onMouseEnter={(e) => {
+                if (type === 'danger') {
+                  e.currentTarget.style.backgroundColor = '#991b1b';
+                } else if (type === 'warning') {
+                  e.currentTarget.style.backgroundColor = '#a16207';
+                } else {
+                  e.currentTarget.style.backgroundColor = 'var(--card)';
+                  e.currentTarget.style.color = 'var(--foreground)';
+                }
+              }}
+              onMouseLeave={(e) => {
+                const styles = getConfirmButtonStyles();
+                e.currentTarget.style.backgroundColor = styles.backgroundColor;
+                e.currentTarget.style.color = styles.color;
+              }}
             >
               {confirmText}
             </button>
             <button
               onClick={onClose}
-              className="flex-1 px-6 py-3 font-bold uppercase tracking-widest text-sm border-2 border-old-border text-old-ink bg-white hover:bg-old-border transition-all duration-200"
+              className="flex-1 px-6 py-3 font-bold uppercase tracking-widest text-sm border-2 transition-all duration-200"
+              style={{
+                borderColor: 'var(--border)',
+                color: 'var(--foreground)',
+                backgroundColor: 'var(--card)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--muted)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--card)';
+              }}
             >
               {cancelText}
             </button>

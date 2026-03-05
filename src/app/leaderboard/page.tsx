@@ -40,12 +40,12 @@ export default function LeaderboardPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
       <div className="space-y-4">
         {/* Header - Compact */}
-        <div className="border-4 border-old-ink bg-gradient-to-br from-old-paper to-amber-50 p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
+        <div className="border-4 bg-gradient-to-br from-old-paper to-amber-50 p-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ borderColor: 'var(--border)' }}>
           <div className="flex items-center gap-2">
             <span className="text-3xl md:text-4xl">🏆</span>
             <div>
               <h1 className="text-2xl md:text-3xl font-bold uppercase tracking-wider">Leaderboard</h1>
-              <p className="text-old-grey text-xs uppercase tracking-wider">Top Contributors</p>
+              <p className="text-xs uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>Top Contributors</p>
             </div>
           </div>
         </div>
@@ -60,19 +60,19 @@ export default function LeaderboardPage() {
         )}
 
         {/* Leaderboard List - Compact */}
-        <div className="border-4 border-old-ink bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
-          <div className="bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-3 border-b-4 border-old-ink">
+        <div className="border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+          <div className="bg-gradient-to-r from-old-ink to-gray-800 p-3 border-b-4" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
             <h2 className="text-sm md:text-base font-bold uppercase tracking-wider">All Rankings</h2>
           </div>
 
           {loading ? (
             <div className="text-center py-8">
-              <p className="text-old-grey uppercase tracking-wider text-xs">Loading...</p>
+              <p className="uppercase tracking-wider text-xs" style={{ color: 'var(--muted-foreground)' }}>Loading...</p>
             </div>
           ) : leaders.length === 0 ? (
-            <div className="text-center py-8 border-2 border-dashed border-old-border m-3">
+            <div className="text-center py-8 border-2 border-dashed m-3" style={{ borderColor: 'var(--border)' }}>
               <span className="text-4xl mb-2 block">📊</span>
-              <p className="text-old-grey text-xs uppercase tracking-wider">No data</p>
+              <p className="text-xs uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>No data</p>
             </div>
           ) : (
             <div className="divide-y-2 divide-old-border">
@@ -84,8 +84,8 @@ export default function LeaderboardPage() {
         </div>
 
         {/* Info Box - Compact */}
-        <div className="border-4 border-old-ink bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
-          <div className="bg-old-paper border-b-2 border-old-border p-3">
+        <div className="border-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+          <div className="border-b-2 p-3" style={{ backgroundColor: 'var(--background)', borderColor: 'var(--border)' }}>
             <h3 className="font-bold uppercase tracking-wider text-sm flex items-center gap-2">
               <span>📊</span>
               <span>Score System</span>
@@ -100,20 +100,20 @@ export default function LeaderboardPage() {
                 </h4>
                 <ul className="space-y-1.5 text-xs">
                   <li className="flex justify-between items-center">
-                    <span className="text-old-grey">Return on time</span>
-                    <span className="font-bold text-green-700 border border-green-600 px-1.5 py-0.5 bg-white">+10</span>
+                    <span className="" style={{ color: 'var(--muted-foreground)' }}>Return on time</span>
+                    <span className="font-bold text-green-700 border border-green-600 px-1.5 py-0.5" style={{ backgroundColor: 'var(--card)' }}>+10</span>
                   </li>
                   <li className="flex justify-between items-center">
-                    <span className="text-old-grey">Donate book</span>
-                    <span className="font-bold text-green-700 border border-green-600 px-1.5 py-0.5 bg-white">+20</span>
+                    <span className="" style={{ color: 'var(--muted-foreground)' }}>Donate book</span>
+                    <span className="font-bold text-green-700 border border-green-600 px-1.5 py-0.5" style={{ backgroundColor: 'var(--card)' }}>+20</span>
                   </li>
                   <li className="flex justify-between items-center">
-                    <span className="text-old-grey">Write review</span>
-                    <span className="font-bold text-green-700 border border-green-600 px-1.5 py-0.5 bg-white">+5</span>
+                    <span className="" style={{ color: 'var(--muted-foreground)' }}>Write review</span>
+                    <span className="font-bold text-green-700 border border-green-600 px-1.5 py-0.5" style={{ backgroundColor: 'var(--card)' }}>+5</span>
                   </li>
                   <li className="flex justify-between items-center">
-                    <span className="text-old-grey">Share idea</span>
-                    <span className="font-bold text-green-700 border border-green-600 px-1.5 py-0.5 bg-white">+3</span>
+                    <span className="" style={{ color: 'var(--muted-foreground)' }}>Share idea</span>
+                    <span className="font-bold text-green-700 border border-green-600 px-1.5 py-0.5" style={{ backgroundColor: 'var(--card)' }}>+3</span>
                   </li>
                 </ul>
               </div>
@@ -124,20 +124,20 @@ export default function LeaderboardPage() {
                 </h4>
                 <ul className="space-y-1.5 text-xs">
                   <li className="flex justify-between items-center">
-                    <span className="text-old-grey">Return late</span>
-                    <span className="font-bold text-red-700 border border-red-600 px-1.5 py-0.5 bg-white">-15</span>
+                    <span className="" style={{ color: 'var(--muted-foreground)' }}>Return late</span>
+                    <span className="font-bold text-red-700 border border-red-600 px-1.5 py-0.5" style={{ backgroundColor: 'var(--card)' }}>-15</span>
                   </li>
                   <li className="flex justify-between items-center">
-                    <span className="text-old-grey">Lost book</span>
-                    <span className="font-bold text-red-700 border border-red-600 px-1.5 py-0.5 bg-white">-50</span>
+                    <span className="" style={{ color: 'var(--muted-foreground)' }}>Lost book</span>
+                    <span className="font-bold text-red-700 border border-red-600 px-1.5 py-0.5" style={{ backgroundColor: 'var(--card)' }}>-50</span>
                   </li>
                   <li className="flex justify-between items-center">
-                    <span className="text-old-grey">Negative review</span>
-                    <span className="font-bold text-red-700 border border-red-600 px-1.5 py-0.5 bg-white">-10</span>
+                    <span className="" style={{ color: 'var(--muted-foreground)' }}>Negative review</span>
+                    <span className="font-bold text-red-700 border border-red-600 px-1.5 py-0.5" style={{ backgroundColor: 'var(--card)' }}>-10</span>
                   </li>
                   <li className="flex justify-between items-center">
-                    <span className="text-old-grey">Idea downvoted</span>
-                    <span className="font-bold text-red-700 border border-red-600 px-1.5 py-0.5 bg-white">-1</span>
+                    <span className="" style={{ color: 'var(--muted-foreground)' }}>Idea downvoted</span>
+                    <span className="font-bold text-red-700 border border-red-600 px-1.5 py-0.5" style={{ backgroundColor: 'var(--card)' }}>-1</span>
                   </li>
                 </ul>
               </div>
@@ -188,10 +188,10 @@ function PodiumCard({ user, rank }: any) {
         <p className="font-bold text-xs uppercase tracking-wider truncate text-center mb-0.5">
           {user.full_name || user.username}
         </p>
-        <p className="text-xs text-old-grey text-center truncate mb-1.5">@{user.username}</p>
-        <div className="border-t border-old-border pt-1.5">
+        <p className="text-xs text-center truncate mb-1.5" style={{ color: 'var(--muted-foreground)' }}>@{user.username}</p>
+        <div className="border-t pt-1.5" style={{ borderColor: 'var(--border)' }}>
           <p className="text-xl md:text-2xl font-bold text-center">{user.success_score}</p>
-          <p className="text-xs text-old-grey uppercase text-center">Pts</p>
+          <p className="text-xs uppercase text-center" style={{ color: 'var(--muted-foreground)' }}>Pts</p>
         </div>
       </div>
       
@@ -226,7 +226,7 @@ function LeaderRow({ user, rank }: any) {
           {getMedalIcon(rank) ? (
             <div className="text-xl md:text-2xl">{getMedalIcon(rank)}</div>
           ) : (
-            <div className="border-2 border-old-ink bg-white px-1.5 py-0.5 font-bold text-xs md:text-sm">
+            <div className="border-2 px-1.5 py-0.5 font-bold text-xs md:text-sm" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
               #{rank}
             </div>
           )}
@@ -237,24 +237,24 @@ function LeaderRow({ user, rank }: any) {
           <p className="font-bold uppercase text-xs md:text-sm tracking-wider truncate">
             {user.full_name || user.username}
           </p>
-          <p className="text-xs text-old-grey truncate">@{user.username}</p>
+          <p className="text-xs truncate" style={{ color: 'var(--muted-foreground)' }}>@{user.username}</p>
         </div>
 
         {/* Stats - Compact, Hidden on mobile */}
         <div className="hidden sm:flex gap-2 md:gap-3">
-          <div className="text-center border border-old-border bg-white px-2 py-0.5">
+          <div className="text-center border px-2 py-0.5" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
             <p className="text-sm md:text-base font-bold">{user.books_shared || 0}</p>
-            <p className="text-xs uppercase text-old-grey">Shared</p>
+            <p className="text-xs uppercase" style={{ color: 'var(--muted-foreground)' }}>Shared</p>
           </div>
-          <div className="text-center border border-old-border bg-white px-2 py-0.5">
+          <div className="text-center border px-2 py-0.5" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
             <p className="text-sm md:text-base font-bold">{user.books_received || 0}</p>
-            <p className="text-xs uppercase text-old-grey">Received</p>
+            <p className="text-xs uppercase" style={{ color: 'var(--muted-foreground)' }}>Received</p>
           </div>
         </div>
 
         {/* Success Score - Compact */}
         <div className="flex-shrink-0">
-          <div className="border-2 md:border-4 border-old-ink bg-old-ink text-old-paper px-2 md:px-3 py-1.5 md:py-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] text-center">
+          <div className="border-2 md:border-4 px-2 md:px-3 py-1.5 md:py-2 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.2)] md:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] text-center" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
             <p className="text-lg md:text-xl font-bold">{user.success_score}</p>
             <p className="text-xs uppercase tracking-wider hidden sm:block">Score</p>
           </div>
@@ -262,14 +262,14 @@ function LeaderRow({ user, rank }: any) {
       </div>
 
       {/* Mobile Stats - Compact */}
-      <div className="sm:hidden flex gap-2 mt-2 pt-2 border-t border-old-border">
-        <div className="flex-1 text-center border border-old-border bg-white py-0.5">
+      <div className="sm:hidden flex gap-2 mt-2 pt-2 border-t" style={{ borderColor: 'var(--border)' }}>
+        <div className="flex-1 text-center border py-0.5" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
           <p className="text-xs font-bold">{user.books_shared || 0}</p>
-          <p className="text-xs uppercase text-old-grey">Shared</p>
+          <p className="text-xs uppercase" style={{ color: 'var(--muted-foreground)' }}>Shared</p>
         </div>
-        <div className="flex-1 text-center border border-old-border bg-white py-0.5">
+        <div className="flex-1 text-center border py-0.5" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
           <p className="text-xs font-bold">{user.books_received || 0}</p>
-          <p className="text-xs uppercase text-old-grey">Received</p>
+          <p className="text-xs uppercase" style={{ color: 'var(--muted-foreground)' }}>Received</p>
         </div>
       </div>
     </div>

@@ -67,38 +67,38 @@ export default function ReadingHistoryPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
       <div className="space-y-6">
         {/* Header */}
-        <div className="border-4 border-old-ink bg-gradient-to-br from-old-paper to-amber-50 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] relative overflow-hidden">
+        <div className="border-4 bg-gradient-to-br from-old-paper to-amber-50 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)] relative overflow-hidden" style={{ borderColor: 'var(--border)' }}>
           <div className="absolute top-0 right-0 text-9xl opacity-5">📚</div>
           <div className="relative z-10">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-4xl">📖</span>
               <div>
                 <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-wider">Reading History</h1>
-                <p className="text-old-grey text-sm uppercase tracking-wider">Your Literary Journey</p>
+                <p className="text-sm uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>Your Literary Journey</p>
               </div>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-4 gap-4">
-              <div className="border-2 border-old-ink bg-white p-4 text-center">
+              <div className="border-2 p-4 text-center" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
                 <p className="text-3xl md:text-4xl font-bold">{history.length}</p>
-                <p className="text-xs uppercase text-old-grey mt-1">Total Books</p>
+                <p className="text-xs uppercase mt-1" style={{ color: 'var(--muted-foreground)' }}>Total Books</p>
               </div>
-              <div className="border-2 border-old-ink bg-white p-4 text-center">
+              <div className="border-2 p-4 text-center" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
                 <p className="text-3xl md:text-4xl font-bold">
                   {history.filter(h => h.end_date).length}
                 </p>
-                <p className="text-xs uppercase text-old-grey mt-1">Completed</p>
+                <p className="text-xs uppercase mt-1" style={{ color: 'var(--muted-foreground)' }}>Completed</p>
               </div>
-              <div className="border-2 border-old-ink bg-white p-4 text-center">
+              <div className="border-2 p-4 text-center" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
                 <p className="text-3xl md:text-4xl font-bold">
                   {history.filter(h => !h.end_date).length}
                 </p>
-                <p className="text-xs uppercase text-old-grey mt-1">Reading</p>
+                <p className="text-xs uppercase mt-1" style={{ color: 'var(--muted-foreground)' }}>Reading</p>
               </div>
-              <div className="border-2 border-old-ink bg-yellow-100 p-4 text-center">
+              <div className="border-2 bg-yellow-100 p-4 text-center" style={{ borderColor: 'var(--border)' }}>
                 <p className="text-3xl md:text-4xl font-bold">{holdingBooks.length}</p>
-                <p className="text-xs uppercase text-old-grey mt-1">Holding</p>
+                <p className="text-xs uppercase mt-1" style={{ color: 'var(--muted-foreground)' }}>Holding</p>
               </div>
             </div>
           </div>
@@ -112,20 +112,20 @@ export default function ReadingHistoryPage() {
                 <span className="text-2xl">📚</span>
                 <h2 className="text-xl font-bold uppercase tracking-wider">Currently Holding</h2>
               </div>
-              <span className="px-3 py-1 bg-white text-yellow-600 text-xs font-bold rounded">
+              <span className="px-3 py-1 text-yellow-600 text-xs font-bold rounded" style={{ backgroundColor: 'var(--card)' }}>
                 {holdingBooks.length}
               </span>
             </div>
 
             <div className="p-4">
-              <p className="text-sm text-old-grey mb-4 uppercase tracking-wider">
+              <p className="text-sm mb-4 uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>
                 Books you've completed and are holding until someone requests them
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {holdingBooks.map((book: any) => (
                   <div
                     key={book.id}
-                    className="border-2 border-yellow-600 bg-white p-4 transition-all cursor-pointer hover:shadow-[4px_4px_0px_0px_rgba(202,138,4,0.3)] hover:border-yellow-700"
+                    className="border-2 border-yellow-600 p-4 transition-all cursor-pointer hover:shadow-[4px_4px_0px_0px_rgba(202,138,4,0.3)] hover:border-yellow-700" style={{ backgroundColor: 'var(--card)' }}
                     onClick={() => router.push(`/books/${book.id}`)}
                   >
                     <div className="flex items-start gap-3">
@@ -134,7 +134,7 @@ export default function ReadingHistoryPage() {
                         <h3 className="font-bold uppercase text-sm mb-1 truncate">
                           {book.title}
                         </h3>
-                        <p className="text-xs text-old-grey mb-2">
+                        <p className="text-xs mb-2" style={{ color: 'var(--muted-foreground)' }}>
                           {book.author}
                         </p>
                         <div className="flex items-center gap-2">
@@ -142,7 +142,7 @@ export default function ReadingHistoryPage() {
                             On Hold
                           </span>
                           {book.category && (
-                            <span className="text-xs text-old-grey">
+                            <span className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
                               {book.category}
                             </span>
                           )}
@@ -157,7 +157,7 @@ export default function ReadingHistoryPage() {
         )}
 
         {/* Filter Tabs */}
-        <div className="border-4 border-old-ink bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
+        <div className="border-4 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
           <div className="p-4 flex flex-wrap gap-2">
             {[
               { key: 'all', label: 'All Books', icon: '📚' },
@@ -181,12 +181,12 @@ export default function ReadingHistoryPage() {
         </div>
 
         {/* History List */}
-        <div className="border-4 border-old-ink bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
-          <div className="bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-4 border-b-4 border-old-ink flex items-center justify-between">
+        <div className="border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+          <div className="bg-gradient-to-r from-old-ink to-gray-800 p-4 border-b-4 flex items-center justify-between" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
             <h2 className="text-xl font-bold uppercase tracking-wider">
               {filter === 'all' ? 'All Books' : filter === 'completed' ? 'Completed Books' : 'Currently Reading'}
             </h2>
-            <span className="px-2 py-1 bg-old-paper text-old-ink text-xs font-bold">
+            <span className="px-2 py-1 text-xs font-bold" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}>
               {filteredHistory.length}
             </span>
           </div>
@@ -194,17 +194,16 @@ export default function ReadingHistoryPage() {
           <div className="p-4">
             {loading ? (
               <div className="text-center py-12">
-                <p className="text-old-grey uppercase tracking-wider">Loading...</p>
+                <p className="uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>Loading...</p>
               </div>
             ) : filteredHistory.length === 0 ? (
-              <div className="text-center py-12 border-2 border-dashed border-old-border">
+              <div className="text-center py-12 border-2 border-dashed" style={{ borderColor: 'var(--border)' }}>
                 <span className="text-5xl mb-3 block">📚</span>
-                <p className="text-old-grey text-sm uppercase tracking-wider mb-2">No books in this category</p>
-                <p className="text-old-grey text-xs mb-6">Start your reading journey!</p>
+                <p className="text-sm uppercase tracking-wider mb-2" style={{ color: 'var(--muted-foreground)' }}>No books in this category</p>
+                <p className="text-xs mb-6" style={{ color: 'var(--muted-foreground)' }}>Start your reading journey!</p>
                 <button
                   onClick={() => router.push('/books')}
-                  className="px-6 py-3 border-4 border-old-ink bg-old-ink text-old-paper hover:bg-gray-800 
-                           font-bold uppercase tracking-wider transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
+                  className="px-6 py-3 border-4 hover:bg-gray-800 font-bold uppercase tracking-wider transition-all shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]" style={{ backgroundColor: 'var(--primary)', color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}
                 >
                   Browse Books
                 </button>
@@ -231,14 +230,14 @@ export default function ReadingHistoryPage() {
                           <h3 className="font-bold uppercase text-lg mb-1 truncate">
                             {item.book?.title || 'Unknown Book'}
                           </h3>
-                          <p className="text-sm text-old-grey mb-3">
+                          <p className="text-sm mb-3" style={{ color: 'var(--muted-foreground)' }}>
                             {item.book?.author || 'Unknown Author'}
                           </p>
 
                           {/* Timeline */}
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-                            <div className="border-l-4 border-old-ink pl-3">
-                              <p className="text-old-grey uppercase font-bold mb-1">Started</p>
+                            <div className="border-l-4 pl-3" style={{ borderColor: 'var(--border)' }}>
+                              <p className="uppercase font-bold mb-1" style={{ color: 'var(--muted-foreground)' }}>Started</p>
                               <p className="font-mono">
                                 {new Date(item.start_date).toLocaleDateString('en-US', {
                                   year: 'numeric',
@@ -250,7 +249,7 @@ export default function ReadingHistoryPage() {
 
                             {isCompleted && (
                               <div className="border-l-4 border-green-600 pl-3">
-                                <p className="text-old-grey uppercase font-bold mb-1">Completed</p>
+                                <p className="uppercase font-bold mb-1" style={{ color: 'var(--muted-foreground)' }}>Completed</p>
                                 <p className="font-mono">
                                   {new Date(item.end_date).toLocaleDateString('en-US', {
                                     year: 'numeric',
@@ -262,7 +261,7 @@ export default function ReadingHistoryPage() {
                             )}
 
                             <div className={`border-l-4 pl-3 ${isCompleted ? 'border-green-600' : 'border-blue-600'}`}>
-                              <p className="text-old-grey uppercase font-bold mb-1">Duration</p>
+                              <p className="uppercase font-bold mb-1" style={{ color: 'var(--muted-foreground)' }}>Duration</p>
                               <p className="font-mono">
                                 {duration} {duration === 1 ? 'day' : 'days'}
                                 {!isCompleted && ' (ongoing)'}
@@ -272,10 +271,10 @@ export default function ReadingHistoryPage() {
 
                           {/* Rating & Notes */}
                           {item.rating && (
-                            <div className="mt-3 pt-3 border-t-2 border-old-border">
+                            <div className="mt-3 pt-3 border-t-2" style={{ borderColor: 'var(--border)' }}>
                               <div className="flex items-center gap-2">
                                 <span className="text-yellow-500">{'⭐'.repeat(item.rating)}</span>
-                                <span className="text-xs text-old-grey uppercase">
+                                <span className="text-xs uppercase" style={{ color: 'var(--muted-foreground)' }}>
                                   {item.rating}/5 Rating
                                 </span>
                               </div>
@@ -283,8 +282,8 @@ export default function ReadingHistoryPage() {
                           )}
 
                           {item.notes && (
-                            <div className="mt-2 p-3 bg-old-paper border-2 border-old-border">
-                              <p className="text-xs text-old-grey uppercase font-bold mb-1">Notes</p>
+                            <div className="mt-2 p-3 border-2" style={{ backgroundColor: 'var(--background)', borderColor: 'var(--border)' }}>
+                              <p className="text-xs uppercase font-bold mb-1" style={{ color: 'var(--muted-foreground)' }}>Notes</p>
                               <p className="text-sm">{item.notes}</p>
                             </div>
                           )}

@@ -182,14 +182,14 @@ export default function AdminPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
       <div className="space-y-6">
         {/* Header */}
-        <div className="border-4 border-old-ink bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
+        <div className="border-4 bg-gradient-to-r from-old-ink to-gray-800 p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
           <div className="flex items-center gap-3">
             <span className="text-5xl">⚙️</span>
             <div>
               <h1 className="text-3xl md:text-4xl font-bold uppercase tracking-wider">
                 Admin Panel
               </h1>
-              <p className="text-old-paper opacity-75 text-sm uppercase tracking-wider">
+              <p className="opacity-75 text-sm uppercase tracking-wider" style={{ color: 'var(--primary-foreground)' }}>
                 System Management & Control
               </p>
             </div>
@@ -227,8 +227,8 @@ export default function AdminPage() {
         )}
 
         {/* Tabs */}
-        <div className="border-4 border-old-ink bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
-          <div className="flex border-b-4 border-old-ink overflow-x-auto">
+        <div className="border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+          <div className="flex border-b-4 overflow-x-auto" style={{ borderColor: 'var(--border)' }}>
             <TabButton
               active={activeTab === "overview"}
               onClick={() => setActiveTab("overview")}

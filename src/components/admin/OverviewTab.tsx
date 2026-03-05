@@ -6,13 +6,19 @@ interface OverviewTabProps {
 }
 
 export default function OverviewTab({ stats, onNavigate }: OverviewTabProps) {
-  if (!stats) return <p className="text-center text-old-grey">Loading...</p>
+  if (!stats) return <p className="text-center" style={{ color: 'var(--muted-foreground)' }}>Loading...</p>
   
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="border-2 border-old-border p-4">
-          <h3 className="font-bold uppercase tracking-wider mb-4 text-lg">📊 System Health</h3>
+        <div 
+          className="border-2 p-4"
+          style={{
+            borderColor: 'var(--border)',
+            backgroundColor: 'var(--card)'
+          }}
+        >
+          <h3 className="font-bold uppercase tracking-wider mb-4 text-lg" style={{ color: 'var(--foreground)' }}>📊 System Health</h3>
           <div className="space-y-3">
             <MetricRow label="Available Books" value={stats.available_books || 0} total={stats.total_books || 0} />
             <MetricRow label="Avg Success Score" value={Math.round(stats.avg_success_score || 0)} total={100} />
@@ -22,24 +28,69 @@ export default function OverviewTab({ stats, onNavigate }: OverviewTabProps) {
           </div>
         </div>
 
-        <div className="border-2 border-old-border p-4">
-          <h3 className="font-bold uppercase tracking-wider mb-4 text-lg">🎯 Quick Actions</h3>
+        <div 
+          className="border-2 p-4"
+          style={{
+            borderColor: 'var(--border)',
+            backgroundColor: 'var(--card)'
+          }}
+        >
+          <h3 className="font-bold uppercase tracking-wider mb-4 text-lg" style={{ color: 'var(--foreground)' }}>🎯 Quick Actions</h3>
           <div className="space-y-2">
             <button 
               onClick={() => onNavigate('users' as TabType)}
-              className="w-full px-4 py-2 border-2 border-old-ink bg-white hover:bg-old-ink hover:text-old-paper transition-all font-bold uppercase text-sm"
+              className="w-full px-4 py-2 border-2 transition-all font-bold uppercase text-sm"
+              style={{
+                borderColor: 'var(--border)',
+                backgroundColor: 'var(--card)',
+                color: 'var(--foreground)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--primary)';
+                e.currentTarget.style.color = 'var(--primary-foreground)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--card)';
+                e.currentTarget.style.color = 'var(--foreground)';
+              }}
             >
               👥 Manage Users
             </button>
             <button 
               onClick={() => onNavigate('requests' as TabType)}
-              className="w-full px-4 py-2 border-2 border-old-ink bg-white hover:bg-old-ink hover:text-old-paper transition-all font-bold uppercase text-sm"
+              className="w-full px-4 py-2 border-2 transition-all font-bold uppercase text-sm"
+              style={{
+                borderColor: 'var(--border)',
+                backgroundColor: 'var(--card)',
+                color: 'var(--foreground)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--primary)';
+                e.currentTarget.style.color = 'var(--primary-foreground)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--card)';
+                e.currentTarget.style.color = 'var(--foreground)';
+              }}
             >
               📬 View Requests
             </button>
             <button 
               onClick={() => onNavigate('books' as TabType)}
-              className="w-full px-4 py-2 border-2 border-old-ink bg-white hover:bg-old-ink hover:text-old-paper transition-all font-bold uppercase text-sm"
+              className="w-full px-4 py-2 border-2 transition-all font-bold uppercase text-sm"
+              style={{
+                borderColor: 'var(--border)',
+                backgroundColor: 'var(--card)',
+                color: 'var(--foreground)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--primary)';
+                e.currentTarget.style.color = 'var(--primary-foreground)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--card)';
+                e.currentTarget.style.color = 'var(--foreground)';
+              }}
             >
               📚 Manage Books
             </button>
@@ -53,8 +104,8 @@ export default function OverviewTab({ stats, onNavigate }: OverviewTabProps) {
 function MetricRow({ label, value, total }: { label: string; value: number; total?: number }) {
   return (
     <div className="flex justify-between items-center text-sm">
-      <span className="text-old-grey uppercase tracking-wider">{label}</span>
-      <span className="font-bold">
+      <span className="uppercase tracking-wider" style={{ color: 'var(--muted-foreground)' }}>{label}</span>
+      <span className="font-bold" style={{ color: 'var(--foreground)' }}>
         {value}{total && ` / ${total}`}
       </span>
     </div>

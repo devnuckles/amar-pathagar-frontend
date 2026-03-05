@@ -70,7 +70,7 @@ export default function DonationsPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8">
       <div className="space-y-6">
         {/* Header */}
-        <div className="border-4 border-old-ink bg-gradient-to-r from-green-600 to-teal-600 text-white p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
+        <div className="border-4 bg-gradient-to-r from-green-600 to-teal-600 text-white p-6 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ borderColor: 'var(--border)' }}>
           <div className="flex items-center gap-3">
             <span className="text-5xl">🎁</span>
             <div>
@@ -81,12 +81,12 @@ export default function DonationsPage() {
         </div>
 
         {/* Donate Section */}
-        <div className="border-4 border-old-ink bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
-          <div className="bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-4 border-b-4 border-old-ink flex items-center justify-between">
+        <div className="border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+          <div className="bg-gradient-to-r from-old-ink to-gray-800 p-4 border-b-4 flex items-center justify-between" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
             <h2 className="text-xl font-bold uppercase tracking-wider">Make a Donation</h2>
             <button
               onClick={() => setShowDonateForm(!showDonateForm)}
-              className="px-4 py-2 border-2 border-old-paper hover:bg-old-paper hover:text-old-ink font-bold uppercase text-sm transition-all"
+              className="px-4 py-2 border-2 border-old-paper hover: hover: font-bold uppercase text-sm transition-all" style={{ backgroundColor: 'var(--background)', color: 'var(--foreground)' }}
             >
               {showDonateForm ? 'Cancel' : '+ Donate'}
             </button>
@@ -110,7 +110,7 @@ export default function DonationsPage() {
                     >
                       <div className="text-4xl mb-2">💰</div>
                       <p className="font-bold uppercase">Money</p>
-                      <p className="text-xs text-old-grey mt-1">Financial Support</p>
+                      <p className="text-xs mt-1" style={{ color: 'var(--muted-foreground)' }}>Financial Support</p>
                     </button>
                     <button
                       type="button"
@@ -123,7 +123,7 @@ export default function DonationsPage() {
                     >
                       <div className="text-4xl mb-2">📚</div>
                       <p className="font-bold uppercase">Book</p>
-                      <p className="text-xs text-old-grey mt-1">Donate a Book</p>
+                      <p className="text-xs mt-1" style={{ color: 'var(--muted-foreground)' }}>Donate a Book</p>
                     </button>
                   </div>
                 </div>
@@ -138,7 +138,7 @@ export default function DonationsPage() {
                       min="1"
                       value={donationForm.amount}
                       onChange={(e) => setDonationForm({ ...donationForm, amount: e.target.value })}
-                      className="w-full px-4 py-3 border-2 border-old-border focus:border-old-ink outline-none text-lg"
+                      className="w-full px-4 py-3 border-2 focus: outline-none text-lg" style={{ borderColor: 'var(--border)' }}
                       placeholder="10.00"
                       required
                     />
@@ -151,7 +151,7 @@ export default function DonationsPage() {
                   <textarea
                     value={donationForm.message}
                     onChange={(e) => setDonationForm({ ...donationForm, message: e.target.value })}
-                    className="w-full px-4 py-3 border-2 border-old-border focus:border-old-ink outline-none"
+                    className="w-full px-4 py-3 border-2 focus: outline-none" style={{ borderColor: 'var(--border)' }}
                     rows={3}
                     placeholder="Share why you're donating..."
                   />
@@ -159,7 +159,7 @@ export default function DonationsPage() {
 
                 <button
                   type="submit"
-                  className="w-full px-6 py-4 border-2 border-green-600 bg-green-600 text-white hover:bg-white hover:text-green-600 font-bold uppercase text-lg transition-all"
+                  className="w-full px-6 py-4 border-2 border-green-600 bg-green-600 text-white hover: hover:text-green-600 font-bold uppercase text-lg transition-all" style={{ backgroundColor: 'var(--card)' }}
                 >
                   {donationType === 'money' ? '💰 Donate Money' : '📚 Donate Book'}
                 </button>
@@ -169,19 +169,19 @@ export default function DonationsPage() {
         </div>
 
         {/* Recent Donations */}
-        <div className="border-4 border-old-ink bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]">
-          <div className="bg-gradient-to-r from-old-ink to-gray-800 text-old-paper p-4 border-b-4 border-old-ink">
+        <div className="border-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,0.3)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
+          <div className="bg-gradient-to-r from-old-ink to-gray-800 p-4 border-b-4" style={{ color: 'var(--primary-foreground)', borderColor: 'var(--border)' }}>
             <h2 className="text-xl font-bold uppercase tracking-wider">Recent Donations</h2>
           </div>
 
           <div className="p-6">
             {loading ? (
               <div className="text-center py-12">
-                <p className="text-old-grey uppercase tracking-wider text-sm">Loading donations...</p>
+                <p className="uppercase tracking-wider text-sm" style={{ color: 'var(--muted-foreground)' }}>Loading donations...</p>
               </div>
             ) : donations.length === 0 ? (
               <div className="text-center py-12">
-                <p className="text-old-grey uppercase tracking-wider text-sm">No donations yet</p>
+                <p className="uppercase tracking-wider text-sm" style={{ color: 'var(--muted-foreground)' }}>No donations yet</p>
               </div>
             ) : (
               <div className="space-y-4">
@@ -194,9 +194,9 @@ export default function DonationsPage() {
         </div>
 
         {/* Info Box */}
-        <div className="border-4 border-old-ink bg-white p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
+        <div className="border-4 p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]" style={{ backgroundColor: 'var(--card)', borderColor: 'var(--border)' }}>
           <h3 className="font-bold uppercase tracking-wider mb-3 text-lg">💡 Why Donate?</h3>
-          <div className="space-y-2 text-sm text-old-grey">
+          <div className="space-y-2 text-sm" style={{ color: 'var(--muted-foreground)' }}>
             <p>• Help maintain and grow our community library</p>
             <p>• Enable more people to access books</p>
             <p>• Support the trust-based reading network</p>
@@ -220,7 +220,7 @@ function DonationCard({ donation }: any) {
   }
 
   return (
-    <div className="border-2 border-old-border p-4 hover:border-old-ink transition-all">
+    <div className="border-2 p-4 hover: transition-all" style={{ borderColor: 'var(--border)' }}>
       <div className="flex items-start gap-4">
         <div className="text-4xl flex-shrink-0">{getIcon(donation.donation_type)}</div>
         <div className="flex-1 min-w-0">
@@ -236,9 +236,9 @@ function DonationCard({ donation }: any) {
             {donation.donor?.username || donation.donor?.full_name || 'Anonymous'}
           </p>
           {donation.message && (
-            <p className="text-sm text-old-grey italic">"{donation.message}"</p>
+            <p className="text-sm italic" style={{ color: 'var(--muted-foreground)' }}>"{donation.message}"</p>
           )}
-          <p className="text-xs text-old-grey mt-2">
+          <p className="text-xs mt-2" style={{ color: 'var(--muted-foreground)' }}>
             {new Date(donation.created_at).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
