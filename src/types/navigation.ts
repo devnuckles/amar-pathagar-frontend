@@ -4,6 +4,12 @@ export interface NavLink {
   protected?: boolean;
 }
 
+export interface UserMenuItem {
+  href: string;
+  label: string;
+  icon: string;
+}
+
 export interface User {
   username: string;
   full_name?: string;
@@ -34,7 +40,7 @@ export interface AuthButtonsProps {
 export interface UserMenuProps {
   user: User;
   onLogout: () => void;
-  variant?: 'desktop' | 'mobile';
+  variant?: 'desktop' | 'mobile' | 'mobile-header';
   onNavigate?: () => void;
 }
 
@@ -51,7 +57,6 @@ export interface MobileNavProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
   publicLinks: NavLink[];
-  protectedLinks: NavLink[];
   isActive: (href: string) => boolean;
   isAuthenticated: boolean;
   user: User | null;

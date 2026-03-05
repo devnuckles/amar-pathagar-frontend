@@ -1,4 +1,4 @@
-import { NavLink } from '@/types/navigation';
+import { NavLink, UserMenuItem } from '@/types/navigation';
 
 export const PUBLIC_LINKS: NavLink[] = [
   { href: '/', label: 'Home' },
@@ -7,9 +7,10 @@ export const PUBLIC_LINKS: NavLink[] = [
   { href: '/leaderboard', label: 'Leaderboard' },
 ];
 
-export const PROTECTED_LINKS: NavLink[] = [
-  { href: '/dashboard', label: 'Dashboard', protected: true },
-  { href: '/my-library', label: 'My Library', protected: true },
-  { href: '/reading-history', label: 'History', protected: true },
-  { href: '/profile/edit', label: 'Profile', protected: true },
+// User menu items - shown in dropdown when authenticated
+export const USER_MENU_ITEMS: UserMenuItem[] = [
+  { href: '/dashboard', label: 'Dashboard', icon: 'LayoutDashboard' },
+  { href: '/my-library', label: 'My Library', icon: 'Library' },
+  { href: '/reading-history', label: 'Reading History', icon: 'History' },
+  { href: '/profile/edit', label: 'Profile Settings', icon: 'Settings' },
 ];

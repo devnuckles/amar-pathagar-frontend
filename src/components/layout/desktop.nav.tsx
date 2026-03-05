@@ -25,8 +25,8 @@ export function DesktopNav({
         />
       ))}
       
-      {/* Auth Section */}
-      <div className="flex items-center gap-3 ml-4 pl-4 border-l" style={{ borderColor: 'var(--border)' }}>
+      {/* Auth Section - More spacing on left */}
+      <div className="flex items-center gap-3 ml-6 pl-6 border-l" style={{ borderColor: 'var(--border)' }}>
         {isAuthenticated && user ? (
           <UserMenu 
             user={user} 
