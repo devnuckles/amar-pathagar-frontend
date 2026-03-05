@@ -6,13 +6,13 @@ import { useAuthStore } from "@/store/authStore";
 import { useToastStore } from "@/store/toastStore";
 import { booksAPI } from "@/lib/api";
 import { adminAPI } from "@/lib/adminApi";
-import StatCard from "@/components/admin/StatCard";
-import TabButton from "@/components/admin/TabButton";
-import OverviewTab from "@/components/admin/OverviewTab";
-import RequestsTab from "@/components/admin/RequestsTab";
-import UsersTab from "@/components/admin/UsersTab";
-import BooksTab from "@/components/admin/BooksTab";
-import ConfirmModal from "@/components/ConfirmModal";
+import StatCard from "@/components/admin/stat.card";
+import TabButton from "@/components/admin/tab.button";
+import OverviewTab from "@/components/admin/overview.tab";
+import RequestsTab from "@/components/admin/requests.tab";
+import UsersTab from "@/components/admin/users.tab";
+import BooksTab from "@/components/admin/books.tab";
+import ConfirmModal from "@/components/confirm.modal";
 
 type TabType = "overview" | "requests" | "users" | "books";
 

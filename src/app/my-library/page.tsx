@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Modal from '@/components/Modal'
+import Modal from '@/components/modal'
 import { useAuthStore } from '@/store/authStore'
 import { useToastStore } from '@/store/toastStore'
 import { bookmarksAPI } from '@/lib/api'

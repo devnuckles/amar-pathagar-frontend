@@ -5,8 +5,8 @@ import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
 import { useToastStore } from '@/store/toastStore'
-import { ToastContainer } from './Toast'
-import NotificationBell from './NotificationBell'
+import { ToastContainer } from './toast'
+import NotificationBell from './notification.bell'
 import { Logo } from './common/logo'
 
 export default function Layout({ children }: { children: React.ReactNode }) {

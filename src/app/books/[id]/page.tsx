@@ -6,7 +6,7 @@ import { useAuthStore } from '@/store/authStore'
 import { useToastStore } from '@/store/toastStore'
 import { booksAPI, ideasAPI, reviewsAPI } from '@/lib/api'
 import { handoverAPI } from '@/lib/handoverApi'
-import ConfirmModal from '@/components/ConfirmModal'
+import ConfirmModal from '@/components/confirm.modal'
 
 export default function BookDetailPage() {
   const params = useParams()

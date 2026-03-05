@@ -7,7 +7,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { authAPI } from "@/lib/api";
 import { useAuthStore } from "@/store/authStore";
 import { useToastStore } from "@/store/toastStore";
-import { ToastContainer } from "@/components/Toast";
+import { ToastContainer } from "@/components/toast";
 
 export default function LoginPage() {
   const router = useRouter();
