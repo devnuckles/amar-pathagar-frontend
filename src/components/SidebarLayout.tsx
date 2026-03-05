@@ -7,7 +7,7 @@ import { useAuthStore } from '@/store/authStore'
 import { useToastStore } from '@/store/toastStore'
 import { ToastContainer } from './Toast'
 import NotificationBell from './NotificationBell'
-import { Logo } from './layout/logo'
+import { Logo } from './common/logo'
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { user, isAuthenticated, logout } = useAuthStore()
