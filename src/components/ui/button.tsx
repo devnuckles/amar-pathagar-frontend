@@ -5,20 +5,16 @@ import { Slot } from "radix-ui"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 cursor-pointer",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-        outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: "shadow-sm",
+        destructive: "shadow-sm",
+        outline: "border shadow-sm",
+        secondary: "shadow-sm",
+        ghost: "",
+        link: "underline-offset-4 hover:underline",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
@@ -43,6 +39,7 @@ function Button({
   variant = "default",
   size = "default",
   asChild = false,
+  style,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
@@ -50,12 +47,97 @@ function Button({
   }) {
   const Comp = asChild ? Slot.Root : "button"
 
+  const getVariantStyles = () => {
+    switch (variant) {
+      case 'default':
+        return {
+          backgroundColor: 'var(--primary)',
+          color: 'var(--primary-foreground)',
+          ...style
+        }
+      case 'destructive':
+        return {
+          backgroundColor: 'var(--destructive)',
+          color: 'var(--destructive-foreground)',
+          ...style
+        }
+      case 'outline':
+        return {
+          backgroundColor: 'var(--background)',
+          color: 'var(--foreground)',
+          borderColor: 'var(--border)',
+          ...style
+        }
+      case 'secondary':
+        return {
+          backgroundColor: 'var(--secondary)',
+          color: 'var(--secondary-foreground)',
+          ...style
+        }
+      case 'ghost':
+        return {
+          backgroundColor: 'transparent',
+          color: 'var(--foreground)',
+          ...style
+        }
+      case 'link':
+        return {
+          backgroundColor: 'transparent',
+          color: 'var(--primary)',
+          ...style
+        }
+      default:
+        return style
+    }
+  }
+
   return (
     <Comp
       data-slot="button"
       data-variant={variant}
       data-size={size}
       className={cn(buttonVariants({ variant, size, className }))}
+      style={getVariantStyles()}
+      onMouseEnter={(e) => {
+        const target = e.currentTarget as HTMLElement
+        switch (variant) {
+          case 'default':
+            target.style.opacity = '0.9'
+            break
+          case 'destructive':
+            target.style.opacity = '0.9'
+            break
+          case 'outline':
+            target.style.backgroundColor = 'var(--accent)'
+            break
+          case 'secondary':
+            target.style.opacity = '0.8'
+            break
+          case 'ghost':
+            target.style.backgroundColor = 'var(--accent)'
+            break
+        }
+      }}
+      onMouseLeave={(e) => {
+        const target = e.currentTarget as HTMLElement
+        switch (variant) {
+          case 'default':
+            target.style.opacity = '1'
+            break
+          case 'destructive':
+            target.style.opacity = '1'
+            break
+          case 'outline':
+            target.style.backgroundColor = 'var(--background)'
+            break
+          case 'secondary':
+            target.style.opacity = '1'
+            break
+          case 'ghost':
+            target.style.backgroundColor = 'transparent'
+            break
+        }
+      }}
       {...props}
     />
   )

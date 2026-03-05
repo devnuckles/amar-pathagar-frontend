@@ -15,6 +15,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 
 interface NavLink {
   href: string;
@@ -64,18 +71,6 @@ export function Navigation({ isAuthenticated = false, user = null, onLogout }: N
     setMobileMenuOpen(false);
   }, [pathname]);
 
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [mobileMenuOpen]);
-
   const isActive = (href: string) => {
     if (href === '/') {
       return pathname === '/';
@@ -113,14 +108,14 @@ export function Navigation({ isAuthenticated = false, user = null, onLogout }: N
 
   return (
     <nav 
-      className="border-b-4 shadow-[0px_4px_0px_0px_rgba(0,0,0,0.3)] sticky top-0 z-40"
+      className="sticky top-0 z-40 border-b"
       style={{ 
-        borderColor: 'hsl(var(--border))',
-        backgroundColor: 'hsl(var(--card))'
+        backgroundColor: 'var(--card)',
+        borderColor: 'var(--border)'
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Logo size="nav" />
 
@@ -131,19 +126,30 @@ export function Navigation({ isAuthenticated = false, user = null, onLogout }: N
                 key={link.href}
                 href={link.href}
                 className={`
-                  font-bold uppercase text-sm tracking-wider transition-colors
+                  px-3 py-2 font-medium text-sm transition-all duration-200
                   ${isActive(link.href)
                     ? 'border-b-2'
-                    : 'hover:opacity-70'
+                    : 'rounded-md'
                   }
                 `}
                 style={{
                   color: isActive(link.href) 
-                    ? 'hsl(var(--primary))' 
-                    : 'hsl(var(--foreground))',
+                    ? 'var(--primary)' 
+                    : 'var(--foreground)',
                   borderColor: isActive(link.href) 
-                    ? 'hsl(var(--primary))' 
-                    : 'transparent'
+                    ? 'var(--primary)' 
+                    : 'transparent',
+                  backgroundColor: 'transparent'
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive(link.href)) {
+                    e.currentTarget.style.backgroundColor = 'var(--muted)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive(link.href)) {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }
                 }}
               >
                 {link.label}
@@ -151,18 +157,18 @@ export function Navigation({ isAuthenticated = false, user = null, onLogout }: N
             ))}
             
             {/* Auth Section - Desktop */}
-            <div className="flex items-center gap-2 ml-2">
+            <div className="flex items-center gap-3 ml-4 pl-4 border-l" style={{ borderColor: 'var(--border)' }}>
               {isAuthenticated && user ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="gap-2 h-9">
+                    <Button variant="ghost" className="gap-2 h-10 px-3 rounded-lg transition-all duration-200">
                       <Badge 
                         variant="default" 
                         className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
                       >
                         {getUserInitial()}
                       </Badge>
-                      <span className="font-semibold">{getUserDisplayName()}</span>
+                      <span className="font-medium text-sm">{getUserDisplayName()}</span>
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-56">
@@ -197,13 +203,14 @@ export function Navigation({ isAuthenticated = false, user = null, onLogout }: N
                   <Button 
                     variant="outline" 
                     size="sm"
+                    className="rounded-lg font-medium transition-all duration-200"
                     onClick={() => router.push('/login')}
                   >
                     Login
                   </Button>
                   <Button 
-                    variant="default" 
                     size="sm"
+                    className="rounded-lg font-medium transition-all duration-200"
                     onClick={() => router.push('/register')}
                   >
                     Sign Up
@@ -214,163 +221,191 @@ export function Navigation({ isAuthenticated = false, user = null, onLogout }: N
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 border-2 transition-all"
-            style={{
-              borderColor: 'hsl(var(--border))',
-              color: 'hsl(var(--foreground))'
-            }}
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={mobileMenuOpen}
-          >
-            {mobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <>
-          {/* Overlay */}
-          <div 
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-            onClick={() => setMobileMenuOpen(false)}
-            aria-hidden="true"
-          />
-          
-          {/* Menu Panel */}
-          <div 
-            className="fixed top-[73px] left-0 right-0 bottom-0 z-50 md:hidden overflow-y-auto"
-            style={{ backgroundColor: 'hsl(var(--card))' }}
-          >
-            <div className="px-4 py-6 space-y-4">
-              {/* Navigation Links */}
-              <div className="space-y-2">
-                {visibleLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`
-                      block px-4 py-3 font-bold uppercase text-sm tracking-wider
-                      border-l-4 transition-all
-                      ${isActive(link.href)
-                        ? 'shadow-md'
-                        : 'hover:shadow-sm'
-                      }
-                    `}
-                    style={{
-                      backgroundColor: isActive(link.href)
-                        ? 'hsl(var(--primary))'
-                        : 'hsl(var(--background))',
-                      color: isActive(link.href)
-                        ? 'hsl(var(--primary-foreground))'
-                        : 'hsl(var(--foreground))',
-                      borderColor: isActive(link.href)
-                        ? 'hsl(var(--primary))'
-                        : 'hsl(var(--border))'
-                    }}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-
-              {/* Auth Section - Mobile */}
-              <div className="pt-4 border-t" style={{ borderColor: 'hsl(var(--border))' }}>
-                {isAuthenticated && user ? (
-                  <div className="space-y-3">
-                    {/* User Info */}
-                    <div 
-                      className="flex items-center gap-3 px-4 py-3 rounded-md"
-                      style={{ backgroundColor: 'hsl(var(--muted))' }}
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <button
+                className="md:hidden p-2 rounded-lg transition-colors hover:opacity-70"
+                style={{
+                  color: 'var(--foreground)'
+                }}
+                aria-label="Open menu"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-[320px] sm:w-[400px] p-0">
+              <SheetHeader className="px-6 py-4 border-b" style={{ borderColor: 'var(--border)' }}>
+                <Logo size="nav" />
+              </SheetHeader>
+              <div className="px-4 py-6 space-y-6 overflow-y-auto h-[calc(100vh-80px)]">
+                {/* Navigation Links */}
+                <nav className="space-y-1">
+                  {visibleLinks.slice(0, publicLinks.length).map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`
+                        block px-4 py-3 rounded-lg font-medium text-sm transition-all duration-200
+                        ${isActive(link.href) ? 'border-b-2' : ''}
+                      `}
+                      style={{
+                        color: isActive(link.href)
+                          ? 'var(--primary)'
+                          : 'var(--foreground)',
+                        borderColor: isActive(link.href)
+                          ? 'var(--primary)'
+                          : 'transparent',
+                        backgroundColor: isActive(link.href) ? 'var(--muted)' : 'transparent'
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isActive(link.href)) {
+                          e.currentTarget.style.backgroundColor = 'var(--muted)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isActive(link.href)) {
+                          e.currentTarget.style.backgroundColor = 'transparent';
+                        }
+                      }}
                     >
-                      <Badge 
-                        variant="default" 
-                        className="w-10 h-10 rounded-full flex items-center justify-center text-base font-bold"
+                      {link.label}
+                    </Link>
+                  ))}
+                </nav>
+
+                {/* Protected Links Section */}
+                {isAuthenticated && protectedLinks.length > 0 && (
+                  <>
+                    <div className="border-t" style={{ borderColor: 'var(--border)' }} />
+                    <nav className="space-y-1">
+                      {visibleLinks.slice(publicLinks.length).map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`
+                            block px-4 py-3 rounded-lg font-medium text-sm transition-all duration-200
+                            ${isActive(link.href) ? 'border-b-2' : ''}
+                          `}
+                          style={{
+                            color: isActive(link.href)
+                              ? 'var(--primary)'
+                              : 'var(--foreground)',
+                            borderColor: isActive(link.href)
+                              ? 'var(--primary)'
+                              : 'transparent',
+                            backgroundColor: isActive(link.href) ? 'var(--muted)' : 'transparent'
+                          }}
+                          onMouseEnter={(e) => {
+                            if (!isActive(link.href)) {
+                              e.currentTarget.style.backgroundColor = 'var(--muted)';
+                            }
+                          }}
+                          onMouseLeave={(e) => {
+                            if (!isActive(link.href)) {
+                              e.currentTarget.style.backgroundColor = 'transparent';
+                            }
+                          }}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </nav>
+                  </>
+                )}
+
+                {/* Auth Section - Mobile */}
+                <div className="pt-4 border-t" style={{ borderColor: 'var(--border)' }}>
+                  {isAuthenticated && user ? (
+                    <div className="space-y-4">
+                      {/* User Info */}
+                      <div 
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200"
+                        style={{ backgroundColor: 'var(--muted)' }}
                       >
-                        {getUserInitial()}
-                      </Badge>
-                      <div className="flex-1">
-                        <p className="font-semibold text-sm">{getUserDisplayName()}</p>
-                        {user.success_score !== undefined && (
-                          <p className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                            Score: {user.success_score}
-                          </p>
-                        )}
+                        <Badge 
+                          variant="default" 
+                          className="w-10 h-10 rounded-full flex items-center justify-center text-base font-bold"
+                        >
+                          {getUserInitial()}
+                        </Badge>
+                        <div className="flex-1">
+                          <p className="font-medium text-sm">{getUserDisplayName()}</p>
+                          {user.success_score !== undefined && (
+                            <p className="text-xs" style={{ color: 'var(--muted-foreground)' }}>
+                              Score: {user.success_score}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      
+                      {/* User Actions */}
+                      <div className="space-y-2">
+                        <Button 
+                          variant="outline" 
+                          className="w-full justify-start rounded-lg transition-all duration-200"
+                          onClick={() => {
+                            router.push('/profile/edit');
+                            setMobileMenuOpen(false);
+                          }}
+                        >
+                          <User className="mr-2 h-4 w-4" />
+                          Profile
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          className="w-full justify-start rounded-lg transition-all duration-200"
+                          onClick={() => {
+                            router.push('/dashboard');
+                            setMobileMenuOpen(false);
+                          }}
+                        >
+                          <Settings className="mr-2 h-4 w-4" />
+                          Dashboard
+                        </Button>
+                        <Button 
+                          variant="destructive" 
+                          className="w-full justify-start rounded-lg transition-all duration-200"
+                          onClick={() => {
+                            handleLogout();
+                            setMobileMenuOpen(false);
+                          }}
+                        >
+                          <LogOut className="mr-2 h-4 w-4" />
+                          Logout
+                        </Button>
                       </div>
                     </div>
-                    
-                    {/* User Actions */}
+                  ) : (
                     <div className="space-y-2">
                       <Button 
                         variant="outline" 
-                        className="w-full justify-start"
+                        className="w-full rounded-lg font-medium transition-all duration-200"
                         onClick={() => {
-                          router.push('/profile/edit');
+                          router.push('/login');
                           setMobileMenuOpen(false);
                         }}
                       >
-                        <User className="mr-2 h-4 w-4" />
-                        Profile
+                        Login
                       </Button>
                       <Button 
-                        variant="outline" 
-                        className="w-full justify-start"
+                        className="w-full rounded-lg font-medium transition-all duration-200"
                         onClick={() => {
-                          router.push('/dashboard');
+                          router.push('/register');
                           setMobileMenuOpen(false);
                         }}
                       >
-                        <Settings className="mr-2 h-4 w-4" />
-                        Dashboard
-                      </Button>
-                      <Button 
-                        variant="destructive" 
-                        className="w-full justify-start"
-                        onClick={() => {
-                          handleLogout();
-                          setMobileMenuOpen(false);
-                        }}
-                      >
-                        <LogOut className="mr-2 h-4 w-4" />
-                        Logout
+                        Sign Up
                       </Button>
                     </div>
-                  </div>
-                ) : (
-                  <div className="space-y-2">
-                    <Button 
-                      variant="outline" 
-                      className="w-full"
-                      onClick={() => {
-                        router.push('/login');
-                        setMobileMenuOpen(false);
-                      }}
-                    >
-                      Login
-                    </Button>
-                    <Button 
-                      variant="default" 
-                      className="w-full"
-                      onClick={() => {
-                        router.push('/register');
-                        setMobileMenuOpen(false);
-                      }}
-                    >
-                      Sign Up
-                    </Button>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
-            </div>
-          </div>
-        </>
-      )}
+            </SheetContent>
+          </Sheet>
+        </div>
+      </div>
     </nav>
   );
 }

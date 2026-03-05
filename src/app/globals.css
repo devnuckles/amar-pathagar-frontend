@@ -296,6 +296,27 @@
   .animate-slide-up {
     animation: slide-up 0.3s ease-out;
   }
+
+  /* Glassmorphism utility */
+  .glass {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  [data-theme="dark"] .glass {
+    background: rgba(18, 18, 18, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  [data-theme="reading"] .glass {
+    background: rgba(244, 241, 234, 0.95);
+    border-bottom: 1px solid rgba(61, 53, 48, 0.05);
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
+  }
 }
 
 /* ============================================
