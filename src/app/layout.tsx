@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { ThemeWrapper } from '@/components/theme/theme-wrapper'
+import { ThemeWrapper } from '@/components/theme/theme.wrapper'
 import { Navigation } from '@/components/layout/navigation'
 
 export const metadata: Metadata = {

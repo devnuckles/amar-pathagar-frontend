@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { Logo } from '@/components/common/logo';
-import { DesktopNav } from './desktop-nav';
-import { MobileNav } from './mobile-nav';
+import { DesktopNav } from './desktop.nav';
+import { MobileNav } from './mobile.nav';
 import { useNavigation } from '@/hooks/useNavigation';
 import { useAuthStore } from '@/store/authStore';
 

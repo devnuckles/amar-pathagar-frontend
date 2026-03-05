@@ -2,9 +2,9 @@
 
 import { Menu } from 'lucide-react';
 import { Logo } from '@/components/common/logo';
-import { NavLink } from './nav-link';
-import { AuthButtons } from './auth-buttons';
-import { UserMenu } from './user-menu';
+import { NavLink } from './nav.link';
+import { AuthButtons } from './auth.buttons';
+import { UserMenu } from './user.menu';
 import { Sheet, SheetContent, SheetHeader } from '@/components/ui/sheet';
 import { MobileNavProps } from '@/types/navigation';
 

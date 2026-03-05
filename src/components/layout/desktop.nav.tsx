@@ -1,8 +1,8 @@
 'use client';
 
-import { NavLink } from './nav-link';
-import { AuthButtons } from './auth-buttons';
-import { UserMenu } from './user-menu';
+import { NavLink } from './nav.link';
+import { AuthButtons } from './auth.buttons';
+import { UserMenu } from './user.menu';
 import { DesktopNavProps } from '@/types/navigation';
 
 export function DesktopNav({

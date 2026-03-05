@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Sun, Moon, BookOpen } from 'lucide-react';
-import { useTheme, Theme } from './theme-provider';
+import { useTheme, Theme } from './theme.provider';
 
 interface ThemeSwitcherProps {
   className?: string;

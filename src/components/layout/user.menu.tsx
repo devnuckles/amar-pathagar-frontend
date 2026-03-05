@@ -11,7 +11,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '@/components/ui/dropdown.menu';
 import { UserMenuProps } from '@/types/navigation';
 import { getUserInitial, getUserDisplayName } from '@/utils/user';
 
